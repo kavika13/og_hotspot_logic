@@ -1,0 +1,38 @@
+<? xml version="1.0" ?>
+<Mod>
+    <Id>hotspot-logic</Id>
+    <Name>Hotspot Logic</Name>
+
+    <Category>Script</Category>
+    <Category>Modding</Category>
+
+    <Thumbnail>Data/Images/flying_mod/thumb.jpg</Thumbnail>
+    <PreviewImage>Data/Images/flying_mod/thumb.jpg</PreviewImage>
+
+    <Description>A set of hotspots that you can wire together to implement game logic, without programming, and can plug your own custom hotspots into</Description>
+    <Version>1.0.0</Version>
+    <Author>Merlyn Morgan-Graham</Author>
+
+    <Tag>Script</Tag>
+    <Tag>Modding</Tag>
+
+    <SupportedVersion>*</SupportedVersion>
+    <NeedsRestart>false</NeedsRestart>
+
+    <Item category="Hotspot Logic"
+          title="Load Trigger"
+          path="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml"
+          thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+
+    <Item category="Hotspot Logic"
+          title="Enter Trigger"
+          path="Data/Objects/Hotspots/hotspot_logic/enter_trigger.xml"
+          thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+
+    <Item category="Hotspot Logic"
+          title="Goal Hotspot"
+          path="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml"
+          thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+
+    <LevelHookFile>Data/Scripts/hotspot_logic/level_mod_hook.as</LevelHookFile>
+</Mod>
