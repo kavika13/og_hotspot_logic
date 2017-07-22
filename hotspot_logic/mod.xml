@@ -34,5 +34,10 @@
           path="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml"
           thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 
+    <Item category="Hotspot Logic"
+          title="Teleport Target"
+          path="Data/Objects/Hotspots/hotspot_logic/teleport_target.xml"
+          thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+
     <LevelHookFile>Data/Scripts/hotspot_logic/level_mod_hook.as</LevelHookFile>
 </Mod>

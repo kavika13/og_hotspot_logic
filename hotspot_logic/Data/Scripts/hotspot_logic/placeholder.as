@@ -11,16 +11,16 @@ class Placeholder {
 
 Placeholder@ CreatePlaceholder(
         Object@ owner, ScriptParams@ params, string id_storage_param_name,
-        string label, string editor_display_name, vec3 offset = vec3(0)) {
+        string label, string editor_display_name, vec3 offset = vec3(0), bool is_input_only = true) {
     Placeholder result;
     result.id_storage_param_name = id_storage_param_name;
     result.offset = offset;
-    LoadOrCreatePlaceholder(result, owner, params, label, editor_display_name);
+    LoadOrCreatePlaceholder(result, owner, params, label, editor_display_name, is_input_only);
     return result;
 }
 
 void LoadOrCreatePlaceholder(
-        Placeholder@ placeholder, Object@ owner, ScriptParams@ params, string label, string editor_display_name) {
+        Placeholder@ placeholder, Object@ owner, ScriptParams@ params, string label, string editor_display_name, bool is_input_only = true) {
     int id = placeholder.id;
 
     if(params.HasParam(placeholder.id_storage_param_name)) {
@@ -31,7 +31,7 @@ void LoadOrCreatePlaceholder(
     Object@ obj = LoadOrCreatePlaceholderObject(id, is_new_obj);
     id = obj.GetID();
 
-    SetPlaceholderState(obj, true);
+    SetPlaceholderState(obj, is_input_only);
     SetPlaceholderEditorLabel(obj, label, 3);
     SetPlaceholderEditorDisplayName(obj, editor_display_name);
 
@@ -116,6 +116,18 @@ vec3 GetPlaceholderPos(Object@ owner, vec3 offset) {
         offset.x * owner.GetScale().x * 2.0f,
         (offset.y + 1.1f) * owner.GetScale().y * 2.0f,
         offset.z * owner.GetScale().z * 2.0f);
+}
+
+Object@ GetPlaceholderTarget(Placeholder@ placeholder) {
+    Object@ placeholder_obj = ReadObjectFromID(placeholder.id);
+    PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(placeholder_obj);
+    int target_id = inner_placeholder_object.GetConnectID();
+
+    if(target_id != -1 && ObjectExists(target_id)) {
+        return ReadObjectFromID(target_id);
+    } else {
+        return null;
+    }
 }
 
 void LogPlaceholderState(Placeholder@ placeholder, Object@ owner) {
