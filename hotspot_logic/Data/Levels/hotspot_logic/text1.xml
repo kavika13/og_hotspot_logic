@@ -6,7 +6,7 @@
 <LoadingScreen>
     <Image></Image>
 </LoadingScreen>
-<OutOfDate NavMesh="false" NavMeshParamHash="-1674835251" />
+<OutOfDate NavMesh="true" NavMeshParamHash="-1674835251" />
 <AmbientSounds />
 <Script></Script>
 <LevelScriptParameters>
@@ -39,7 +39,7 @@
     <EnvObject t0="-26.6538" t1="-3.42134" t2="31.9171" s0="49.5541" s1="1" s2="49.0398" q0="0" q1="0" q2="0" q3="1" id="1" color_r="0" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <CameraObject t0="-3.69102" t1="17.5642" t2="33.2508" s0="1" s1="1" s2="1" q0="0.00627319" q1="0.957341" q2="-0.28814" q3="0.0208425" id="2">
+    <CameraObject t0="-6.65995" t1="8.61423" t2="28.6924" s0="1" s1="1" s2="1" q0="0.0115605" q1="0.924362" q2="-0.380304" q3="0.0280988" id="2">
         <parameters />
     </CameraObject>
     <PlaceholderObject t0="8.24518" t1="9.12059" t2="27.8262" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="3" type_file="" special_type="2">
@@ -77,12 +77,12 @@
     <Hotspot t0="-4.59552" t1="14.7345" t2="34.0827" s0="0.838958" s1="0.838958" s2="0.838958" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="11" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="Reach First Checkpoint" />
-            <parameter name="On-Achieve Count" type="int" val="2" />
+            <parameter name="On-Achieve Count" type="int" val="3" />
             <parameter name="On-Enable Count" type="int" val="1" />
             <parameter name="On-Reset Count" type="int" val="2" />
             <parameter name="_achieve_placeholder_id" type="string" val="13" />
             <parameter name="_enable_placeholder_id" type="string" val="12" />
-            <parameter name="_on_achieve_placeholder_ids" type="string" val="9, 23" />
+            <parameter name="_on_achieve_placeholder_ids" type="string" val="9, 23, 50" />
             <parameter name="_on_enable_placeholder_ids" type="string" val="39" />
             <parameter name="_on_reset_placeholder_ids" type="string" val="32, 45" />
         </parameters>
@@ -330,6 +330,187 @@
             <Connection id="43" />
         </Connections>
     </PlaceholderObject>
+    <ActorObject t0="-39.2904" t1="-1.60529" t2="55.8695" s0="1" s1="1" s2="1" q0="0" q1="0.995867" q2="0" q3="0.0908182" id="46" type_file="Data/Objects/characters/raider_rabbit_actor.xml" is_player="0">
+        <parameters>
+            <parameter name="Aggression" type="float" val="0.5" />
+            <parameter name="Attack Damage" type="float" val="1" />
+            <parameter name="Attack Knockback" type="float" val="1" />
+            <parameter name="Attack Speed" type="float" val="1" />
+            <parameter name="Block Follow-up" type="float" val="0.5" />
+            <parameter name="Block Skill" type="float" val="0.5" />
+            <parameter name="Character Scale" type="float" val="1" />
+            <parameter name="Damage Resistance" type="float" val="1" />
+            <parameter name="Ear Size" type="float" val="1" />
+            <parameter name="Fat" type="float" val="0.5" />
+            <parameter name="Focus FOV distance" type="float" val="100" />
+            <parameter name="Focus FOV horizontal" type="float" val="0.62834" />
+            <parameter name="Focus FOV vertical" type="float" val="0.62834" />
+            <parameter name="Ground Aggression" type="float" val="0.5" />
+            <parameter name="Knockout Shield" type="int" val="0" />
+            <parameter name="Left handed" type="int" val="0" />
+            <parameter name="Movement Speed" type="float" val="1" />
+            <parameter name="Muscle" type="float" val="0.5" />
+            <parameter name="Peripheral FOV distance" type="float" val="4" />
+            <parameter name="Peripheral FOV horizontal" type="float" val="1.41376" />
+            <parameter name="Peripheral FOV vertical" type="float" val="1.41376" />
+            <parameter name="Static" type="int" val="0" />
+            <parameter name="Teams" type="string" val="guard" />
+        </parameters>
+        <Connections>
+            <Connection id="46" />
+        </Connections>
+        <ItemConnections />
+        <Palette>
+            <Color label="Fur" channel="0" red="1" green="1" blue="1" />
+            <Color label="Pants" channel="1" red="1" green="1" blue="1" />
+            <Color label="Shirt" channel="2" red="1" green="1" blue="1" />
+            <Color label="Leather" channel="3" red="1" green="1" blue="1" />
+        </Palette>
+    </ActorObject>
+    <PlaceholderObject t0="-24.7639" t1="1.42617" t2="26.9956" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="47" type_file="" special_type="0">
+        <parameters>
+            <parameter name="Dialogue" type="string" val="empty" />
+            <parameter name="DisplayName" type="string" val="Reached First Checkpoint" />
+            <parameter name="NumParticipants" type="int" val="1" />
+            <parameter name="Script" type="string" val='#name &quot;Reached First Checkpoint&quot;&#x0A;#participants 1&#x0A;set_character_pos 1 -33.4089 -1.43146 13.1672 -60&#x0A;set_cam -31.5744 -1.2624 13.7416 0 94.47 0 90&#x0A;say 1 &quot;Turner&quot; &quot;Alright, I got to the first mandatory checkpoint.&quot;&#x0A;set_cam -33.0269 -0.561323 11.3715 -6.99 -168.41 0 90&#x0A;say 1 &quot;Turner&quot; &quot;I can tackle the next two checkpoints in any order.&quot;&#x0A;' />
+            <parameter name="obj_1" type="int" val="48" />
+        </parameters>
+        <Connections>
+            <Connection id="47" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-24.7639" t1="2.12617" t2="26.9956" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="48" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="33" />
+        </Connections>
+    </PlaceholderObject>
+    <Hotspot t0="-24.4005" t1="2.39778" t2="32.3378" s0="0.246779" s1="0.246779" s2="0.246779" q0="0" q1="0.707107" q2="0" q3="-0.707107" id="49" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="" />
+            <parameter name="_target_placeholder_id" type="string" val="52" />
+            <parameter name="_trigger_placeholder_id" type="string" val="51" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-6.3087" t1="17.1675" t2="35.7246" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="50" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="51" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-24.894" t1="2.94069" t2="31.8443" s0="0.0740337" s1="0.0740337" s2="0.0740337" q0="0" q1="0.707107" q2="0" q3="-0.707107" id="51" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="49" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-24.894" t1="2.94069" t2="32.8314" s0="0.0740337" s1="0.0740337" s2="0.0740337" q0="0" q1="0.707107" q2="0" q3="-0.707107" id="52" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="47" />
+        </Connections>
+    </PlaceholderObject>
+    <ActorObject t0="-5.1475" t1="-0.957001" t2="58.3593" s0="1" s1="1" s2="1" q0="0" q1="0.995867" q2="0" q3="0.0908182" id="57" type_file="Data/Objects/characters/raider_rabbit_actor.xml" is_player="0">
+        <parameters>
+            <parameter name="Aggression" type="float" val="0.5" />
+            <parameter name="Attack Damage" type="float" val="1" />
+            <parameter name="Attack Knockback" type="float" val="1" />
+            <parameter name="Attack Speed" type="float" val="1" />
+            <parameter name="Block Follow-up" type="float" val="0.5" />
+            <parameter name="Block Skill" type="float" val="0.5" />
+            <parameter name="Character Scale" type="float" val="1" />
+            <parameter name="Damage Resistance" type="float" val="1" />
+            <parameter name="Ear Size" type="float" val="1" />
+            <parameter name="Fat" type="float" val="0.5" />
+            <parameter name="Focus FOV distance" type="float" val="100" />
+            <parameter name="Focus FOV horizontal" type="float" val="0.62834" />
+            <parameter name="Focus FOV vertical" type="float" val="0.62834" />
+            <parameter name="Ground Aggression" type="float" val="0.5" />
+            <parameter name="Knockout Shield" type="int" val="0" />
+            <parameter name="Left handed" type="int" val="0" />
+            <parameter name="Movement Speed" type="float" val="1" />
+            <parameter name="Muscle" type="float" val="0.5" />
+            <parameter name="Peripheral FOV distance" type="float" val="4" />
+            <parameter name="Peripheral FOV horizontal" type="float" val="1.41376" />
+            <parameter name="Peripheral FOV vertical" type="float" val="1.41376" />
+            <parameter name="Static" type="int" val="0" />
+            <parameter name="Teams" type="string" val="guard" />
+        </parameters>
+        <Connections>
+            <Connection id="57" />
+        </Connections>
+        <ItemConnections />
+        <Palette>
+            <Color label="Fur" channel="0" red="1" green="1" blue="1" />
+            <Color label="Pants" channel="1" red="1" green="1" blue="1" />
+            <Color label="Shirt" channel="2" red="1" green="1" blue="1" />
+            <Color label="Leather" channel="3" red="1" green="1" blue="1" />
+        </Palette>
+    </ActorObject>
+    <Hotspot t0="-15.2239" t1="-2.42134" t2="46.4001" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="61" type_file="Data/Objects/Hotspots/hotspot_logic/defeat_trigger.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="" />
+            <parameter name="On-Defeat Count" type="int" val="1" />
+            <parameter name="Target Count" type="int" val="2" />
+            <parameter name="_on_defeat_placeholder_ids" type="string" val="63" />
+            <parameter name="_target_placeholder_ids" type="string" val="62, 78" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-15.0489" t1="-0.22134" t2="48.4001" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="62" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="57" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-15.2239" t1="-0.221337" t2="44.4001" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="63" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="92" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-15.3989" t1="-0.22134" t2="48.4001" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="78" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="46" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-8.65462" t1="-2.42134" t2="36.4104" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="89" type_file="" special_type="0">
+        <parameters>
+            <parameter name="Dialogue" type="string" val="empty" />
+            <parameter name="DisplayName" type="string" val="Enemies Defeated" />
+            <parameter name="NumParticipants" type="int" val="1" />
+            <parameter name="Script" type="string" val='#name &quot;Enemies Defeated&quot;&#x0A;#participants 1&#x0A;say 1 &quot;Turner&quot; &quot;I defeated all the enemies. Cool stuff.&quot;&#x0A;' />
+            <parameter name="obj_1" type="int" val="90" />
+        </parameters>
+        <Connections>
+            <Connection id="89" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-8.65462" t1="-1.72134" t2="36.4104" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="90" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="33" />
+        </Connections>
+    </PlaceholderObject>
+    <Hotspot t0="-11.2416" t1="-1.84182" t2="39.9758" s0="0.169097" s1="0.169097" s2="0.169097" q0="0" q1="0.481301" q2="0" q3="0.876555" id="91" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="" />
+            <parameter name="_target_placeholder_id" type="string" val="93" />
+            <parameter name="_trigger_placeholder_id" type="string" val="92" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-11.1377" t1="-1.4698" t2="40.4427" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="0.481301" q2="0" q3="0.876555" id="92" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="91" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-10.7747" t1="-1.4698" t2="39.872" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="0.481301" q2="0" q3="0.876555" id="93" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="89" />
+        </Connections>
+    </PlaceholderObject>
 </ActorObjects>
 <RecentItems>
     <SpawnerItem display_name="load_trigger.xml" path="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml" thumbnail_path="empty_placeholder.png" />
@@ -339,5 +520,7 @@
     <SpawnerItem display_name="Goal Hotspot" path="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
     <SpawnerItem display_name="Enter Trigger" path="Data/Objects/Hotspots/hotspot_logic/enter_trigger.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
     <SpawnerItem display_name="Teleport Target" path="Data/Objects/Hotspots/hotspot_logic/teleport_target.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+    <SpawnerItem display_name="Raider Rabbit" path="Data/Objects/characters/raider_rabbit_actor.xml" thumbnail_path="Data/UI/spawner/thumbs/Character/raider_rabbit_actor.png" />
+    <SpawnerItem display_name="Defeat Trigger" path="Data/Objects/Hotspots/hotspot_logic/defeat_trigger.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
     <SpawnerItem display_name="Play Dialogue Target" path="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 </RecentItems>
