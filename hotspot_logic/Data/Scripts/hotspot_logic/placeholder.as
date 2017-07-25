@@ -340,15 +340,24 @@ vec3 GetArrayPlaceholderPos(Object@ owner, vec3 offset, bool is_vertical, int in
     }
 }
 
+Object@ GetPlaceholderArrayTargetAtIndex(PlaceholderArray@ placeholder_array, uint index) {
+    Object@ placeholder = ReadObjectFromID(placeholder_array.ids[index]);
+    PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(placeholder);
+    int target_id = inner_placeholder_object.GetConnectID();
+
+    if(target_id != -1 && ObjectExists(target_id)) {
+        return ReadObjectFromID(target_id);
+    }
+
+    return null;
+}
+
 void SendPlaceholderArrayTargetsScriptMessage(PlaceholderArray@ placeholder_array, Object@ owner) {
     for(uint i = 0; i < placeholder_array.ids.length(); i++) {
-        Object@ placeholder = ReadObjectFromID(placeholder_array.ids[i]);
-        PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(placeholder);
-        int target_id = inner_placeholder_object.GetConnectID();
+        Object@ target_obj = GetPlaceholderArrayTargetAtIndex(placeholder_array, i);
 
-        if(target_id != -1 && ObjectExists(target_id)) {
-            Object@ target_obj = ReadObjectFromID(target_id);
-            target_obj.QueueScriptMessage("hotspot_logic_triggered " + target_id + " " + owner.GetID());
+        if(!(target_obj is null)) {
+            target_obj.QueueScriptMessage("hotspot_logic_triggered " + target_obj.GetID() + " " + owner.GetID());
         }
     }    
 }
