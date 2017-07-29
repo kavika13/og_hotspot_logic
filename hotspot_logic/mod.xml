@@ -49,5 +49,10 @@
           path="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml"
           thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 
+    <Item category="Hotspot Logic"
+          title="Activate Target"
+          path="Data/Objects/Hotspots/hotspot_logic/activate_target.xml"
+          thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+
     <LevelHookFile>Data/Scripts/hotspot_logic/level_mod_hook.as</LevelHookFile>
 </Mod>
