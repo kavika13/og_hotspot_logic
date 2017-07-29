@@ -82,7 +82,7 @@ void ReceiveMessage(string message) {
                 ScriptParams@ params = target_obj is null ? null : target_obj.GetScriptParams();
 
                 if(!(target_obj is null) && target_obj.GetType() == _placeholder_object && params.HasParam("Dialogue") && params.HasParam("DisplayName")) {
-                    level.SendMessage("start_dialogue \"" + params.GetString("DisplayName") + "\"");
+                    level.SendMessage("hotspot_logic_queue_dialogue \"" + params.GetString("DisplayName") + "\"");
                 } else {
                     Log(warning, "------- No Dialogue Target Set: " + params.GetString("Editor Label"));
                 }
@@ -112,13 +112,13 @@ void LoadFromParams() {
     DisposePlaceholder(g_trigger_placeholder);
     g_trigger_placeholder = CreatePlaceholder(
         hotspot_obj, params, "_trigger_placeholder_id",
-        "Trigger", GetTriggerPlaceholderLabelName(editor_label), vec3(-1.0f, 0.0f, 1.0f));
+        "Trigger", GetTriggerPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, 1.0f));
     UpdatePlaceholderParentConnection(g_trigger_placeholder, hotspot_obj);
 
     DisposePlaceholder(g_target_placeholder);
     g_target_placeholder = CreatePlaceholder(  // TODO: Somehow restrict target type to _movement_object instances only
         hotspot_obj, params, "_target_placeholder_id",
-        "Target", GetTargetPlaceholderLabelName(editor_label), vec3(1.0f, 0.0f, 1.0f), false);
+        "Target", GetTargetPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, -1.0f), false);
     UpdatePlaceholderParentConnection(g_target_placeholder, hotspot_obj);
 
     SetParameters();
