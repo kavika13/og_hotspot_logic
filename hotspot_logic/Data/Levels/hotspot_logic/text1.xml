@@ -40,7 +40,7 @@
     <EnvObject t0="-26.6538" t1="-3.42134" t2="31.9171" s0="49.5541" s1="1" s2="49.0398" q0="0" q1="0" q2="0" q3="1" id="1" color_r="0" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <CameraObject t0="-3.21898" t1="12.4966" t2="39.3093" s0="1" s1="1" s2="1" q0="-0.00253721" q1="0.980383" q2="0.0126472" q3="0.19668" id="2">
+    <CameraObject t0="-22.6096" t1="12.6192" t2="52.0976" s0="1" s1="1" s2="1" q0="0.00303096" q1="0.996959" q2="-0.0572407" q3="0.0527897" id="2">
         <parameters />
     </CameraObject>
     <PlaceholderObject t0="-49.2014" t1="4.10396" t2="17.0297" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="3" type_file="" special_type="2">
@@ -620,13 +620,13 @@
         <parameters>
             <parameter name="Editor Label" type="string" val="Defeat Guards" />
             <parameter name="On-Achieve Count" type="int" val="1" />
-            <parameter name="On-Enable Count" type="int" val="3" />
-            <parameter name="On-Reset Count" type="int" val="3" />
+            <parameter name="On-Enable Count" type="int" val="2" />
+            <parameter name="On-Reset Count" type="int" val="2" />
             <parameter name="_achieve_placeholder_id" type="string" val="86" />
             <parameter name="_enable_placeholder_id" type="string" val="81" />
             <parameter name="_on_achieve_placeholder_ids" type="string" val="96" />
-            <parameter name="_on_enable_placeholder_ids" type="string" val="87, 88, 94" />
-            <parameter name="_on_reset_placeholder_ids" type="string" val="95, 102, 103" />
+            <parameter name="_on_enable_placeholder_ids" type="string" val="87, 88" />
+            <parameter name="_on_reset_placeholder_ids" type="string" val="95, 102" />
         </parameters>
     </Hotspot>
     <PlaceholderObject t0="-22.3466" t1="12.5648" t2="57.3106" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="81" type_file="" special_type="2">
@@ -696,12 +696,6 @@
             <Connection id="89" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-22.3466" t1="13.0808" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="94" type_file="" special_type="2">
-        <parameters />
-        <Connections>
-            <Connection id="-1" />
-        </Connections>
-    </PlaceholderObject>
     <PlaceholderObject t0="-20.8726" t1="12.5648" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="95" type_file="" special_type="2">
         <parameters />
         <Connections>
@@ -731,12 +725,6 @@
         <parameters />
         <Connections>
             <Connection id="73" />
-        </Connections>
-    </PlaceholderObject>
-    <PlaceholderObject t0="-20.8726" t1="13.0808" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="103" type_file="" special_type="2">
-        <parameters />
-        <Connections>
-            <Connection id="-1" />
         </Connections>
     </PlaceholderObject>
 </ActorObjects>

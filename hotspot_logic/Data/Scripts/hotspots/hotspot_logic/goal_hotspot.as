@@ -165,30 +165,30 @@ void LoadFromParams() {
 
     DisposePlaceholder(g_enable_placeholder);
     g_enable_placeholder = CreatePlaceholder(
-        hotspot_obj, params, "_enable_placeholder_id",
+        kHotspotInputTerminalPlaceholder, hotspot_obj, params, "_enable_placeholder_id",
         "Enable", GetEnablePlaceholderLabelName(editor_label), vec3(-1.0f, 0.0f, 1.0f));
     UpdatePlaceholderParentConnection(g_enable_placeholder, hotspot_obj);
 
     DisposePlaceholder(g_achieve_placeholder);
     g_achieve_placeholder = CreatePlaceholder(
-        hotspot_obj, params, "_achieve_placeholder_id",
+        kHotspotInputTerminalPlaceholder, hotspot_obj, params, "_achieve_placeholder_id",
         "Achieve", GetAchievePlaceholderLabelName(editor_label), vec3(1.0f, 0.0f, 1.0f));
     UpdatePlaceholderParentConnection(g_achieve_placeholder, hotspot_obj);
 
     DisposePlaceholderArray(g_on_enable_placeholders);
     g_on_enable_placeholders = CreatePlaceholderArray(
         params, "_on_enable_placeholder_ids",
-        "On-Enable", GetOnEnablePlaceholderLabelName(editor_label), vec3(-1.0f, 0.0f, -1.0f), true);
+        "On-Enable", GetOnEnablePlaceholderLabelName(editor_label), vec3(-1.0f, 0.0f, -1.0f), kVerticalPlaceholderArrayLayout);
 
     DisposePlaceholderArray(g_on_reset_placeholders);
     g_on_reset_placeholders = CreatePlaceholderArray(
         params, "_on_reset_placeholder_ids",
-        "On-Reset", GetOnResetPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, -1.0f), true);
+        "On-Reset", GetOnResetPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, -1.0f), kVerticalPlaceholderArrayLayout);
 
     DisposePlaceholderArray(g_on_achieve_placeholders);
     g_on_achieve_placeholders = CreatePlaceholderArray(
         params, "_on_achieve_placeholder_ids",
-        "On-Achieve", GetOnAchievePlaceholderLabelName(editor_label), vec3(1.0f, 0.0f, -1.0f), true);
+        "On-Achieve", GetOnAchievePlaceholderLabelName(editor_label), vec3(1.0f, 0.0f, -1.0f), kVerticalPlaceholderArrayLayout);
 
     SetParameters();
 }

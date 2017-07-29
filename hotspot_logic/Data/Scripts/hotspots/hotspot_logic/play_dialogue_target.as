@@ -111,15 +111,16 @@ void LoadFromParams() {
 
     DisposePlaceholder(g_trigger_placeholder);
     g_trigger_placeholder = CreatePlaceholder(
-        hotspot_obj, params, "_trigger_placeholder_id",
+        kHotspotInputTerminalPlaceholder, hotspot_obj, params, "_trigger_placeholder_id",
         "Trigger", GetTriggerPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, 1.0f));
     UpdatePlaceholderParentConnection(g_trigger_placeholder, hotspot_obj);
 
     DisposePlaceholder(g_target_placeholder);
-    g_target_placeholder = CreatePlaceholder(  // TODO: Somehow restrict target type to _movement_object instances only
-        hotspot_obj, params, "_target_placeholder_id",
-        "Target", GetTargetPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, -1.0f), false);
-    UpdatePlaceholderParentConnection(g_target_placeholder, hotspot_obj);
+    g_target_placeholder = CreatePlaceholder(
+        kGenericTerminalPlaceholder, hotspot_obj, params, "_target_placeholder_id",
+        "Target", GetTargetPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, -1.0f));
+    EntityType[] allowed_target_types = { _placeholder_object };
+    SetPlaceholderAllowedConnectionTypes(g_target_placeholder, allowed_target_types);
 
     SetParameters();
 }

@@ -1,8 +1,14 @@
 const string k_placeholder_object_path = "Data/Objects/placeholder/empty_placeholder.xml";
 
+enum PlacholderType {
+    kGenericTerminalPlaceholder = 0,
+    kHotspotInputTerminalPlaceholder = 1,
+};
+
 // --- Placeholder Instance ---
 
 class Placeholder {
+    PlacholderType type;
     int id = -1;
     string id_storage_param_name = "";
     string id_storage_param_value = "";
@@ -10,17 +16,18 @@ class Placeholder {
 };
 
 Placeholder@ CreatePlaceholder(
-        Object@ owner, ScriptParams@ params, string id_storage_param_name,
-        string label, string editor_display_name, vec3 offset = vec3(0), bool is_input_only = true) {
+        PlacholderType type, Object@ owner, ScriptParams@ params, string id_storage_param_name,
+        string label, string editor_display_name, vec3 offset = vec3(0)) {
     Placeholder result;
+    result.type = type;
     result.id_storage_param_name = id_storage_param_name;
     result.offset = offset;
-    LoadOrCreatePlaceholder(result, owner, params, label, editor_display_name, is_input_only);
+    LoadOrCreatePlaceholder(result, owner, params, label, editor_display_name);
     return result;
 }
 
 void LoadOrCreatePlaceholder(
-        Placeholder@ placeholder, Object@ owner, ScriptParams@ params, string label, string editor_display_name, bool is_input_only = true) {
+        Placeholder@ placeholder, Object@ owner, ScriptParams@ params, string label, string editor_display_name) {
     int id = placeholder.id;
 
     if(params.HasParam(placeholder.id_storage_param_name)) {
@@ -31,7 +38,7 @@ void LoadOrCreatePlaceholder(
     Object@ obj = LoadOrCreatePlaceholderObject(id, is_new_obj);
     id = obj.GetID();
 
-    SetPlaceholderState(obj, is_input_only);
+    SetPlaceholderState(obj, placeholder.type == kHotspotInputTerminalPlaceholder);  // TODO: Use a switch, maybe just pass on
     SetPlaceholderEditorLabel(obj, label, 3);
     SetPlaceholderEditorDisplayName(obj, editor_display_name);
 
@@ -57,6 +64,11 @@ Object@ LoadOrCreatePlaceholderObject(int id, bool &out created) {
     int new_id = CreateObject(k_placeholder_object_path, false);
 
     return ReadObjectFromID(new_id);
+}
+
+bool SetPlaceholderAllowedConnectionTypes(Placeholder@ placeholder, const EntityType[]@ allowed_types) {
+    int id = placeholder.id;
+    return SetPlaceholderAllowedConnectionTypes_(id, allowed_types);
 }
 
 void ProtectPlaceholderParams(Placeholder@ placeholder, ScriptParams@ params) {
@@ -164,21 +176,26 @@ void DisposePlaceholder(Placeholder@ placeholder) {
 
 // --- Placeholder Array ---
 
+enum PlacholderArrayLayout {
+    kHorizontalPlaceholderArrayLayout = 0,
+    kVerticalPlaceholderArrayLayout = 1,
+};
+
 class PlaceholderArray {
     int[] ids;
     string id_storage_param_name = "";
     string id_storage_param_value = "";
     vec3 offset = vec3(0);
-    bool is_vertical = false;
+    PlacholderArrayLayout layout;
 };
 
 PlaceholderArray@ CreatePlaceholderArray(
         ScriptParams@ params, string id_storage_param_name,
-        string label, string editor_display_name, vec3 offset = vec3(0), bool is_vertical = false) {
+        string label, string editor_display_name, vec3 offset = vec3(0), PlacholderArrayLayout layout = kHorizontalPlaceholderArrayLayout) {
     PlaceholderArray result;
     result.id_storage_param_name = id_storage_param_name;
     result.offset = offset;
-    result.is_vertical = is_vertical;
+    result.layout = layout;
     LoadPlaceholderArrayFromStorageParam(result, params, label, editor_display_name);
     return result;
 }
@@ -215,6 +232,17 @@ void LoadPlaceholderArrayFromStorageParam(
         placeholder_array.id_storage_param_value = new_id_storage_param_value;
         params.SetString(placeholder_array.id_storage_param_name, new_id_storage_param_value);
     }
+}
+
+bool SetPlaceholderArrayAllowedConnectionTypes(PlaceholderArray@ placeholder_array, const EntityType[]@ allowed_types) {
+    bool result = true;
+
+    for(uint i = 0, len = placeholder_array.ids.length(); i < len; i++) {
+        int id = placeholder_array.ids[i];
+        result = result && SetPlaceholderAllowedConnectionTypes_(id, allowed_types);
+    }
+
+    return result;
 }
 
 uint GetPlaceholderArrayCount(PlaceholderArray@ placeholder_array) {
@@ -321,15 +349,15 @@ void UpdatePlaceholderArrayTransforms(PlaceholderArray@ placeholder_array, Objec
             target_placeholder.SetTranslation(
                 owner.GetTranslation() +
                 Mult(quat, GetArrayPlaceholderPos(
-                    owner, placeholder_array.offset, placeholder_array.is_vertical, placeholder_count, i + 1)));
+                    owner, placeholder_array.offset, placeholder_array.layout, placeholder_count, i + 1)));
             target_placeholder.SetRotation(quat);
             target_placeholder.SetScale(owner.GetScale() * 0.3f);
         }
     }
 }
 
-vec3 GetArrayPlaceholderPos(Object@ owner, vec3 offset, bool is_vertical, int instance_count, int current_index) {
-    if(!is_vertical) {
+vec3 GetArrayPlaceholderPos(Object@ owner, vec3 offset, PlacholderArrayLayout layout, int instance_count, int current_index) {
+    if(layout != kVerticalPlaceholderArrayLayout) {  // TODO: Use a switch
         return vec3(
             (instance_count * 0.5f + 0.5f - current_index) * owner.GetScale().x * 0.35f +
                 offset.x * owner.GetScale().y * 2.0f,
@@ -398,11 +426,11 @@ void DisposePlaceholderArray(PlaceholderArray@ placeholder_array) {
 
 // --- Per instance setup ---
 
-void SetPlaceholderState(Object@ target_placeholder, bool is_hotspot_input_only = false) {
+void SetPlaceholderState(Object@ target_placeholder, bool is_input_for_hotspot = false) {
     PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(target_placeholder);
     inner_placeholder_object.SetSpecialType(kPlayerConnect);
 
-    if(is_hotspot_input_only) {  // TODO: Add parameters for the filter instead?
+    if(is_input_for_hotspot) {
         inner_placeholder_object.SetConnectToTypeFilterFlags(uint64(1) << _hotspot_object);
     } else {
         inner_placeholder_object.SetConnectToTypeFilterFlags(
@@ -416,6 +444,32 @@ void SetPlaceholderState(Object@ target_placeholder, bool is_hotspot_input_only 
     target_placeholder.SetTranslatable(false);
     target_placeholder.SetRotatable(false);
     target_placeholder.SetScalable(false);
+}
+
+bool SetPlaceholderAllowedConnectionTypes_(int object_id, const EntityType[]@ allowed_types) {
+    bool result = false;
+
+    if(object_id != -1 && ObjectExists(object_id)) {
+        Object@ target_placeholder = ReadObjectFromID(object_id);
+
+        if(target_placeholder.GetType() == _placeholder_object) {
+            PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(target_placeholder);
+            uint64 flags = 0;
+
+            for(uint i = 0, len = allowed_types.length(); i < len; i++) {
+                flags = flags | (uint64(1) << allowed_types[i]);
+            }
+
+            inner_placeholder_object.SetConnectToTypeFilterFlags(flags);
+            result = true;
+        }
+    }
+
+    if(!result) {
+        Log(warning, "Failed to set allowed connection flags for object: " + object_id);
+    }
+
+    return result;
 }
 
 void SetPlaceholderEditorLabel(Object@ target_placeholder, string label_value, int scale = 6) {

@@ -137,6 +137,8 @@ void LoadFromParams() {
     g_target_placeholders = CreatePlaceholderArray(
         params, "_target_placeholder_ids",
         "Target", GetTargetPlaceholderLabelName(editor_label), vec3(0.0f, 0.0f, 1.0f));
+    EntityType[] allowed_target_types = { _movement_object };
+    SetPlaceholderArrayAllowedConnectionTypes(g_target_placeholders, allowed_target_types);
 
     DisposePlaceholderArray(g_on_defeat_placeholders);
     g_on_defeat_placeholders = CreatePlaceholderArray(
