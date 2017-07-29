@@ -114,7 +114,7 @@ void ReceiveMessage(string message) {
         if(g_is_enabled && !g_is_achieved) {
             Log(info, "------- Goal Reset: " + params.GetString("Editor Label"));
 
-            SendPlaceholderArrayTargetsScriptMessage(g_on_reset_placeholders, hotspot_obj);
+            SendScriptMessageToPlaceholderArrayTargets(g_on_reset_placeholders, hotspot_obj);
         }
     } else if(token == "hotspot_logic_triggered") {
         if(token_iter.FindNextToken(message)) {
@@ -126,14 +126,14 @@ void ReceiveMessage(string message) {
                 g_is_enabled = true;
                 g_is_achieved = false;
 
-                SendPlaceholderArrayTargetsScriptMessage(g_on_enable_placeholders, hotspot_obj);
+                SendScriptMessageToPlaceholderArrayTargets(g_on_enable_placeholders, hotspot_obj);
             } else if(g_is_enabled && !g_is_achieved && input_placeholder_id == g_achieve_placeholder.id) {
                 Log(info, "------- Goal Achieved: " + params.GetString("Editor Label"));
 
                 g_is_achieved = true;
                 g_is_enabled = false;
 
-                SendPlaceholderArrayTargetsScriptMessage(g_on_achieve_placeholders, hotspot_obj);
+                SendScriptMessageToPlaceholderArrayTargets(g_on_achieve_placeholders, hotspot_obj);
             }
         }
     } else if(token == "hotspot_logic_log_state") {

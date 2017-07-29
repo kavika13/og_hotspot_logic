@@ -109,7 +109,7 @@ void ReceiveMessage(string message) {
                 g_are_all_targets_defeated = true;
                 Log(info, "------- Defeat Trigger Fired: " + params.GetString("Editor Label"));
                 Object@ hotspot_obj = ReadObjectFromID(hotspot.GetID());
-                SendPlaceholderArrayTargetsScriptMessage(g_on_defeat_placeholders, hotspot_obj);
+                SendScriptMessageToPlaceholderArrayTargets(g_on_defeat_placeholders, hotspot_obj);
             }
         }
     } else if(token == "hotspot_logic_log_state") {

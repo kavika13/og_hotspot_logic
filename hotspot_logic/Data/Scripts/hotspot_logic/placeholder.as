@@ -130,6 +130,10 @@ Object@ GetPlaceholderTarget(Placeholder@ placeholder) {
     }
 }
 
+void SendPlaceholderTargetScriptMessage(Placeholder@ placeholder, Object@ owner) {
+    RelayScriptMessageToPlaceholderTarget(GetPlaceholderTarget(placeholder), owner);
+}
+
 void LogPlaceholderState(Placeholder@ placeholder, Object@ owner) {
     Log(info, "owner_id: " + owner.GetID());
     Log(info, "id_storage_param_name: " + placeholder.id_storage_param_name);
@@ -352,14 +356,10 @@ Object@ GetPlaceholderArrayTargetAtIndex(PlaceholderArray@ placeholder_array, ui
     return null;
 }
 
-void SendPlaceholderArrayTargetsScriptMessage(PlaceholderArray@ placeholder_array, Object@ owner) {
+void SendScriptMessageToPlaceholderArrayTargets(PlaceholderArray@ placeholder_array, Object@ owner) {
     for(uint i = 0; i < placeholder_array.ids.length(); i++) {
-        Object@ target_obj = GetPlaceholderArrayTargetAtIndex(placeholder_array, i);
-
-        if(!(target_obj is null)) {
-            target_obj.QueueScriptMessage("hotspot_logic_triggered " + target_obj.GetID() + " " + owner.GetID());
-        }
-    }    
+        RelayScriptMessageToPlaceholderTarget(GetPlaceholderArrayTargetAtIndex(placeholder_array, i), owner);
+    }
 }
 
 void LogPlaceholderArrayState(PlaceholderArray@ placeholder_array, Object@ owner) {
@@ -427,4 +427,39 @@ void SetPlaceholderEditorLabel(Object@ target_placeholder, string label_value, i
 void SetPlaceholderEditorDisplayName(Object@ target_placeholder, string editor_display_name) {
     PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(target_placeholder);
     inner_placeholder_object.SetEditorDisplayName(editor_display_name);
+}
+
+void RelayScriptMessageToPlaceholderTarget(Object@ target_obj, Object@ owner) {
+    if(target_obj is null || !ObjectExists(target_obj.GetID())) {
+        return;
+    }
+
+    int target_id = target_obj.GetID();
+
+    array<int> visited_objects;
+    visited_objects.insertLast(target_obj.GetID());
+
+    while(!(target_obj is null)) {
+        if(target_obj.GetType() == _placeholder_object) {
+            PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(target_obj);
+            int chained_target_id = inner_placeholder_object.GetConnectID();
+
+            if(chained_target_id == -1 || !ObjectExists(chained_target_id)) {
+                break;
+            }
+
+            Object@ chained_target = ReadObjectFromID(chained_target_id);
+
+            if(!(visited_objects.find(chained_target_id) < 0)) {
+                Log(warning, "Hit loop, cancelling sending message through this object: " + target_id);
+                break;
+            }
+
+            @target_obj = @chained_target;
+            visited_objects.insertLast(chained_target_id);
+        } else {
+            target_obj.QueueScriptMessage("hotspot_logic_triggered " + target_id + " " + owner.GetID());
+            break;
+        }
+    }
 }

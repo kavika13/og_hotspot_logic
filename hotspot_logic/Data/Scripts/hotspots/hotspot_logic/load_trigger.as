@@ -51,7 +51,7 @@ void Update() {
         g_has_triggered_on_load_event = true;
         Log(info, "------- Load Trigger Fired: " + params.GetString("Editor Label"));
         Object@ hotspot_obj = ReadObjectFromID(hotspot.GetID());
-        SendPlaceholderArrayTargetsScriptMessage(g_target_placeholders, hotspot_obj);
+        SendScriptMessageToPlaceholderArrayTargets(g_target_placeholders, hotspot_obj);
     }
 
     if(EditorModeActive()) {

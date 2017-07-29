@@ -46,7 +46,7 @@ void HandleEvent(string event, MovementObject @mo) {
     if(event == "enter") {
         Log(info, "------- Enter Trigger Fired: " + params.GetString("Editor Label"));
         Object@ hotspot_obj = ReadObjectFromID(hotspot.GetID());
-        SendPlaceholderArrayTargetsScriptMessage(g_target_placeholders, hotspot_obj);
+        SendScriptMessageToPlaceholderArrayTargets(g_target_placeholders, hotspot_obj);
     }
 }
 
