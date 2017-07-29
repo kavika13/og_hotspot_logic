@@ -6,30 +6,31 @@
 <LoadingScreen>
     <Image></Image>
 </LoadingScreen>
-<OutOfDate NavMesh="true" NavMeshParamHash="-1674835251" />
+<OutOfDate NavMesh="false" NavMeshParamHash="-1674835251" />
 <AmbientSounds />
 <Script></Script>
 <LevelScriptParameters>
     <parameter name="Achievements" type="string" val="flawless, no_injuries, no_kills" />
-    <parameter name="HDR Black point" type="string" val="0.005" />
-    <parameter name="HDR Bloom multiplier" type="string" val="1" />
-    <parameter name="HDR White point" type="string" val="0.971" />
-    <parameter name="Level Boundaries" type="string" val="1" />
+    <parameter name="Fog amount" type="float" val="1" />
+    <parameter name="HDR Black point" type="float" val="0.005" />
+    <parameter name="HDR Bloom multiplier" type="float" val="1" />
+    <parameter name="HDR White point" type="float" val="0.971" />
+    <parameter name="Level Boundaries" type="int" val="1" />
     <parameter name="Objectives" type="string" val="destroy_all" />
     <parameter name="Saturation" type="float" val="1" />
-    <parameter name="Sky Brightness" type="string" val="1" />
-    <parameter name="Sky Rotation" type="string" val="-62" />
+    <parameter name="Sky Brightness" type="float" val="1" />
+    <parameter name="Sky Rotation" type="float" val="126" />
     <parameter name="Sky Tint" type="string" val="255, 255, 255" />
 </LevelScriptParameters>
 <NavMeshParameters cell_size="0.3" cell_height="0.2" agent_height="1.7" agent_radius="0.4" agent_max_climb="1.5" agent_max_slope="60" />
 <Sky>
     <DomeTexture>Data/Textures/skies/blue4.tga</DomeTexture>
-    <SunAngularRad>0.153056</SunAngularRad>
+    <SunAngularRad>0.118</SunAngularRad>
     <SunColorAngle>353.589</SunColorAngle>
-    <RayToSun r0="0.843168" r1="0.508385" r2="0.174962" />
+    <RayToSun r0="-0.931132" r1="0.259464" r2="0.256265" />
 </Sky>
 <ActorObjects>
-    <Hotspot t0="8.24518" t1="6.92059" t2="27.8262" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="0" type_file="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml">
+    <Hotspot t0="-49.2014" t1="1.90396" t2="17.0297" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="0" type_file="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="Target Count" type="int" val="1" />
@@ -39,10 +40,10 @@
     <EnvObject t0="-26.6538" t1="-3.42134" t2="31.9171" s0="49.5541" s1="1" s2="49.0398" q0="0" q1="0" q2="0" q3="1" id="1" color_r="0" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <CameraObject t0="-6.65995" t1="8.61423" t2="28.6924" s0="1" s1="1" s2="1" q0="0.0115605" q1="0.924362" q2="-0.380304" q3="0.0280988" id="2">
+    <CameraObject t0="-43.35" t1="33.2688" t2="11.3805" s0="1" s1="1" s2="1" q0="0.217152" q1="0.770996" q2="-0.493063" q3="0.339557" id="2">
         <parameters />
     </CameraObject>
-    <PlaceholderObject t0="8.24518" t1="9.12059" t2="27.8262" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="3" type_file="" special_type="2">
+    <PlaceholderObject t0="-49.2014" t1="4.10396" t2="17.0297" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="3" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="12" />
@@ -61,7 +62,19 @@
             <Connection id="13" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-6.3087" t1="16.5802" t2="35.7246" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="9" type_file="" special_type="2">
+    <PlaceholderObject t0="-20.8086" t1="5.57047" t2="53.3368" s0="0.0794571" s1="0.0794571" s2="0.0794571" q0="0" q1="0.0211147" q2="0" q3="0.999777" id="6" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="57" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-20.9012" t1="5.57047" t2="53.3407" s0="0.0794571" s1="0.0794571" s2="0.0794571" q0="0" q1="0.0211147" q2="0" q3="0.999777" id="7" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="46" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-43.7549" t1="10.313" t2="25.5138" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="9" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="16" />
@@ -74,7 +87,7 @@
             <parameter name="_target_placeholder_ids" type="string" val="14" />
         </parameters>
     </Hotspot>
-    <Hotspot t0="-4.59552" t1="14.7345" t2="34.0827" s0="0.838958" s1="0.838958" s2="0.838958" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="11" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
+    <Hotspot t0="-45.7902" t1="7.88751" t2="23.1514" s0="1.10248" s1="1.10248" s2="1.10248" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="11" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="Reach First Checkpoint" />
             <parameter name="On-Achieve Count" type="int" val="3" />
@@ -87,13 +100,13 @@
             <parameter name="_on_reset_placeholder_ids" type="string" val="32, 45" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-2.88235" t1="16.5802" t2="32.4408" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="12" type_file="" special_type="2">
+    <PlaceholderObject t0="-47.8256" t1="10.313" t2="20.789" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="12" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="11" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-6.23742" t1="16.5802" t2="32.3695" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="13" type_file="" special_type="2">
+    <PlaceholderObject t0="-48.1527" t1="10.313" t2="25.1868" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="13" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="11" />
@@ -105,7 +118,7 @@
             <Connection id="17" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="-32.0531" t1="7.24741" t2="54.4782" s0="1" s1="1" s2="1" q0="0" q1="-0.999894" q2="0" q3="0.0145454" id="15" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
+    <Hotspot t0="-64.3721" t1="11.3491" t2="62.9078" s0="1" s1="1" s2="1" q0="0" q1="0.727903" q2="0" q3="0.68568" id="15" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="Reach Optional Checkpoint A" />
             <parameter name="On-Achieve Count" type="int" val="0" />
@@ -118,13 +131,13 @@
             <parameter name="_on_reset_placeholder_ids" type="string" val="37" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-30.1121" t1="9.44741" t2="52.4208" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.999894" q2="0" q3="0.0145454" id="16" type_file="" special_type="2">
+    <PlaceholderObject t0="-62.2563" t1="13.5491" t2="64.7849" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0.727903" q2="0" q3="0.68568" id="16" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="15" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-34.1104" t1="9.44741" t2="52.5372" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.999894" q2="0" q3="0.0145454" id="17" type_file="" special_type="2">
+    <PlaceholderObject t0="-62.495" t1="13.5491" t2="60.792" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0.727903" q2="0" q3="0.68568" id="17" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="15" />
@@ -133,10 +146,10 @@
     <ItemObject t0="-32.8355" t1="-1.53272" t2="14.4364" s0="1" s1="1" s2="1" q0="0.380319" q1="-0.0736001" q2="0.221197" q3="0.894992" id="18" type_file="Data/Items/DogWeapons/DogSword.xml" color_r="1" color_g="1" color_b="1" overbright="0">
         <parameters />
     </ItemObject>
-    <ItemObject t0="-30.3365" t1="-0.776132" t2="54.6526" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="19" type_file="Data/Items/Rapier.xml" color_r="1" color_g="1" color_b="1" overbright="0">
+    <ItemObject t0="-8.96197" t1="-1.75399" t2="56.0183" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="19" type_file="Data/Items/Rapier.xml" color_r="1" color_g="1" color_b="1" overbright="0">
         <parameters />
     </ItemObject>
-    <Hotspot t0="5.87911" t1="9.70188" t2="50.2199" s0="1" s1="1" s2="1" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="20" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
+    <Hotspot t0="14.0452" t1="14.2656" t2="60.9481" s0="0.630892" s1="0.630892" s2="0.630892" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="20" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="Reach Optional Checkpoint B" />
             <parameter name="On-Achieve Count" type="int" val="0" />
@@ -149,19 +162,19 @@
             <parameter name="_on_reset_placeholder_ids" type="string" val="38" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="3.81292" t1="11.9019" t2="48.2884" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="21" type_file="" special_type="2">
+    <PlaceholderObject t0="12.7416" t1="15.6535" t2="59.7295" s0="0.189268" s1="0.189268" s2="0.189268" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="21" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="20" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="3.94756" t1="11.9019" t2="52.2861" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="22" type_file="" special_type="2">
+    <PlaceholderObject t0="12.8266" t1="15.6535" t2="62.2517" s0="0.189268" s1="0.189268" s2="0.189268" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="22" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="20" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-6.3087" t1="16.8738" t2="35.7246" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="23" type_file="" special_type="2">
+    <PlaceholderObject t0="-43.7549" t1="10.6988" t2="25.5138" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="23" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="21" />
@@ -208,7 +221,7 @@
     <EnvObject t0="-54.9678" t1="-2.93784" t2="20.3728" s0="24.6462" s1="1" s2="16.8993" q0="0" q1="0" q2="0" q3="1" id="31" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <PlaceholderObject t0="-4.63116" t1="16.5802" t2="35.7602" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="32" type_file="" special_type="2">
+    <PlaceholderObject t0="-43.5914" t1="10.313" t2="23.3149" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="32" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="28" />
@@ -269,25 +282,25 @@
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-31.9949" t1="9.44741" t2="56.4774" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.999894" q2="0" q3="0.0145454" id="37" type_file="" special_type="2">
+    <PlaceholderObject t0="-66.3685" t1="13.5491" t2="63.0272" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0.727903" q2="0" q3="0.68568" id="37" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="35" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="7.87798" t1="11.9019" t2="50.1526" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="38" type_file="" special_type="2">
+    <PlaceholderObject t0="15.3062" t1="15.6535" t2="60.9057" s0="0.189268" s1="0.189268" s2="0.189268" q0="0" q1="-0.695105" q2="0" q3="0.718909" id="38" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="35" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-2.95362" t1="16.5802" t2="35.7959" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="39" type_file="" special_type="2">
+    <PlaceholderObject t0="-43.4278" t1="10.313" t2="21.116" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="39" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="43" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="5.94415" t1="-0.75218" t2="-2.23776" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="40" type_file="" special_type="0">
+    <PlaceholderObject t0="-11.0308" t1="6.2446" t2="-8.02664" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="40" type_file="" special_type="0">
         <parameters>
             <parameter name="Dialogue" type="string" val="empty" />
             <parameter name="DisplayName" type="string" val="Start" />
@@ -299,38 +312,38 @@
             <Connection id="40" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="5.94415" t1="-0.0521796" t2="-2.23776" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="41" type_file="" special_type="2">
+    <PlaceholderObject t0="-11.0308" t1="6.9446" t2="-8.02664" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="41" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="9.37882" t1="-1.76232" t2="3.32206" s0="1" s1="1" s2="1" q0="0" q1="0.707107" q2="0" q3="0.707107" id="42" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+    <Hotspot t0="-14.0912" t1="7.41572" t2="-7.73582" s0="0.138115" s1="0.138115" s2="0.138115" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="42" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="_target_placeholder_id" type="string" val="44" />
             <parameter name="_trigger_placeholder_id" type="string" val="43" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="11.3788" t1="0.437679" t2="5.32206" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0.707107" q2="0" q3="0.707107" id="43" type_file="" special_type="2">
+    <PlaceholderObject t0="-14.3335" t1="7.71957" t2="-7.6031" s0="0.0414345" s1="0.0414345" s2="0.0414345" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="43" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="42" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="11.3788" t1="0.437679" t2="1.32206" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0.707107" q2="0" q3="0.707107" id="44" type_file="" special_type="2">
+    <PlaceholderObject t0="-13.849" t1="7.71957" t2="-7.86855" s0="0.0414345" s1="0.0414345" s2="0.0414345" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="44" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="40" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-4.63116" t1="16.8738" t2="35.7602" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="45" type_file="" special_type="2">
+    <PlaceholderObject t0="-43.5914" t1="10.6988" t2="23.3149" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="45" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="43" />
         </Connections>
     </PlaceholderObject>
-    <ActorObject t0="-39.2904" t1="-1.60529" t2="55.8695" s0="1" s1="1" s2="1" q0="0" q1="0.995867" q2="0" q3="0.0908182" id="46" type_file="Data/Objects/characters/raider_rabbit_actor.xml" is_player="0">
+    <ActorObject t0="-39.7074" t1="-0.949447" t2="55.7959" s0="1" s1="1" s2="1" q0="0" q1="-0.0908182" q2="0" q3="0.995867" id="46" type_file="Data/Objects/characters/raider_rabbit_actor.xml" is_player="0">
         <parameters>
             <parameter name="Aggression" type="float" val="0.5" />
             <parameter name="Attack Damage" type="float" val="1" />
@@ -353,11 +366,11 @@
             <parameter name="Peripheral FOV distance" type="float" val="4" />
             <parameter name="Peripheral FOV horizontal" type="float" val="1.41376" />
             <parameter name="Peripheral FOV vertical" type="float" val="1.41376" />
-            <parameter name="Static" type="int" val="0" />
+            <parameter name="Static" type="int" val="1" />
             <parameter name="Teams" type="string" val="guard" />
         </parameters>
         <Connections>
-            <Connection id="46" />
+            <Connection id="74" />
         </Connections>
         <ItemConnections />
         <Palette>
@@ -367,7 +380,7 @@
             <Color label="Leather" channel="3" red="1" green="1" blue="1" />
         </Palette>
     </ActorObject>
-    <PlaceholderObject t0="-24.7639" t1="1.42617" t2="26.9956" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="47" type_file="" special_type="0">
+    <PlaceholderObject t0="-42.1558" t1="11.6658" t2="10.3601" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="47" type_file="" special_type="0">
         <parameters>
             <parameter name="Dialogue" type="string" val="empty" />
             <parameter name="DisplayName" type="string" val="Reached First Checkpoint" />
@@ -379,38 +392,45 @@
             <Connection id="47" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-24.7639" t1="2.12617" t2="26.9956" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="48" type_file="" special_type="2">
+    <PlaceholderObject t0="-42.1558" t1="12.3658" t2="10.3601" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="48" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="-24.4005" t1="2.39778" t2="32.3378" s0="0.246779" s1="0.246779" s2="0.246779" q0="0" q1="0.707107" q2="0" q3="-0.707107" id="49" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+    <Hotspot t0="-42.5182" t1="11.6907" t2="11.9151" s0="0.0991976" s1="0.0991976" s2="0.0991976" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="49" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="_target_placeholder_id" type="string" val="52" />
             <parameter name="_trigger_placeholder_id" type="string" val="51" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-6.3087" t1="17.1675" t2="35.7246" s0="0.251687" s1="0.251687" s2="0.251687" q0="0" q1="0.999944" q2="0" q3="0.0106214" id="50" type_file="" special_type="2">
+    <PlaceholderObject t0="-43.7549" t1="11.0847" t2="25.5138" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="50" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="51" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-24.894" t1="2.94069" t2="31.8443" s0="0.0740337" s1="0.0740337" s2="0.0740337" q0="0" q1="0.707107" q2="0" q3="-0.707107" id="51" type_file="" special_type="2">
+    <PlaceholderObject t0="-42.5411" t1="11.9089" t2="12.1122" s0="0.0297593" s1="0.0297593" s2="0.0297593" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="51" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="49" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-24.894" t1="2.94069" t2="32.8314" s0="0.0740337" s1="0.0740337" s2="0.0740337" q0="0" q1="0.707107" q2="0" q3="-0.707107" id="52" type_file="" special_type="2">
+    <PlaceholderObject t0="-42.4953" t1="11.9089" t2="11.718" s0="0.0297593" s1="0.0297593" s2="0.0297593" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="52" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="47" />
         </Connections>
     </PlaceholderObject>
-    <ActorObject t0="-5.1475" t1="-0.957001" t2="58.3593" s0="1" s1="1" s2="1" q0="0" q1="0.995867" q2="0" q3="0.0908182" id="57" type_file="Data/Objects/characters/raider_rabbit_actor.xml" is_player="0">
+    <Hotspot t0="-23.9026" t1="-0.570436" t2="46.2435" s0="0.203193" s1="0.203193" s2="0.203193" q0="0" q1="0.00608513" q2="0" q3="0.999981" id="56" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="" />
+            <parameter name="_target_placeholder_id" type="string" val="59" />
+            <parameter name="_trigger_placeholder_id" type="string" val="58" />
+        </parameters>
+    </Hotspot>
+    <ActorObject t0="-4.88522" t1="-1.28568" t2="58.7268" s0="1" s1="1" s2="1" q0="0" q1="0.995867" q2="0" q3="0.0908182" id="57" type_file="Data/Objects/characters/raider_rabbit_actor.xml" is_player="0">
         <parameters>
             <parameter name="Aggression" type="float" val="0.5" />
             <parameter name="Attack Damage" type="float" val="1" />
@@ -427,19 +447,21 @@
             <parameter name="Focus FOV vertical" type="float" val="0.62834" />
             <parameter name="Ground Aggression" type="float" val="0.5" />
             <parameter name="Knockout Shield" type="int" val="0" />
-            <parameter name="Left handed" type="int" val="0" />
+            <parameter name="Left handed" type="int" val="1" />
             <parameter name="Movement Speed" type="float" val="1" />
             <parameter name="Muscle" type="float" val="0.5" />
             <parameter name="Peripheral FOV distance" type="float" val="4" />
             <parameter name="Peripheral FOV horizontal" type="float" val="1.41376" />
             <parameter name="Peripheral FOV vertical" type="float" val="1.41376" />
-            <parameter name="Static" type="int" val="0" />
+            <parameter name="Static" type="int" val="1" />
             <parameter name="Teams" type="string" val="guard" />
         </parameters>
         <Connections>
-            <Connection id="57" />
+            <Connection id="71" />
         </Connections>
-        <ItemConnections />
+        <ItemConnections>
+            <ItemConnection id="19" type="0" mirrored="1" attachment="" />
+        </ItemConnections>
         <Palette>
             <Color label="Fur" channel="0" red="1" green="1" blue="1" />
             <Color label="Pants" channel="1" red="1" green="1" blue="1" />
@@ -447,7 +469,25 @@
             <Color label="Leather" channel="3" red="1" green="1" blue="1" />
         </Palette>
     </ActorObject>
-    <Hotspot t0="-15.2239" t1="-2.42134" t2="46.4001" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="61" type_file="Data/Objects/Hotspots/hotspot_logic/defeat_trigger.xml">
+    <PlaceholderObject t0="-23.8977" t1="-0.123411" t2="46.6499" s0="0.060958" s1="0.060958" s2="0.060958" q0="0" q1="0.00608513" q2="0" q3="0.999981" id="58" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="56" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-23.9075" t1="-0.123411" t2="45.8371" s0="0.060958" s1="0.060958" s2="0.060958" q0="0" q1="0.00608513" q2="0" q3="0.999981" id="59" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="67" />
+        </Connections>
+    </PlaceholderObject>
+    <Hotspot t0="20.0243" t1="5.57833" t2="42.6144" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="60" type_file="Data/Objects/Hotspots/overgrowth_level.xml">
+        <parameters>
+            <parameter name="music" type="string" val="slaver" />
+            <parameter name="player_spawn" type="string" val="" />
+        </parameters>
+    </Hotspot>
+    <Hotspot t0="-21.0545" t1="5.26604" t2="57.2627" s0="0.486438" s1="0.486438" s2="0.486438" q0="0" q1="0" q2="0" q3="1" id="61" type_file="Data/Objects/Hotspots/hotspot_logic/defeat_trigger.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="On-Defeat Count" type="int" val="1" />
@@ -456,22 +496,167 @@
             <parameter name="_target_placeholder_ids" type="string" val="62, 78" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-15.0489" t1="-0.22134" t2="48.4001" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="62" type_file="" special_type="2">
+    <PlaceholderObject t0="-20.9693" t1="6.33621" t2="58.2356" s0="0.145931" s1="0.145931" s2="0.145931" q0="0" q1="0" q2="0" q3="1" id="62" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="57" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-15.2239" t1="-0.221337" t2="44.4001" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="63" type_file="" special_type="2">
+    <PlaceholderObject t0="-21.0545" t1="6.33621" t2="56.2898" s0="0.145931" s1="0.145931" s2="0.145931" q0="0" q1="0" q2="0" q3="1" id="63" type_file="" special_type="2">
         <parameters />
         <Connections>
-            <Connection id="92" />
+            <Connection id="86" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-15.3989" t1="-0.22134" t2="48.4001" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="78" type_file="" special_type="2">
+    <Hotspot t0="-27.3793" t1="-0.606569" t2="65.5117" s0="26.8702" s1="1.71155" s2="11.4049" q0="0" q1="0" q2="0" q3="1" id="64" type_file="Data/Objects/Hotspots/hotspot_logic/enter_trigger.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="" />
+            <parameter name="Target Count" type="int" val="1" />
+            <parameter name="_target_placeholder_ids" type="string" val="65" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-27.3793" t1="3.15884" t2="65.5117" s0="8.06106" s1="0.513465" s2="3.42147" q0="0" q1="0" q2="0" q3="1" id="65" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="79" />
+        </Connections>
+    </PlaceholderObject>
+    <Hotspot t0="-20.8325" t1="4.98779" t2="53.868" s0="0.264857" s1="0.264857" s2="0.264857" q0="0" q1="0.0211147" q2="0" q3="0.999777" id="66" type_file="Data/Objects/Hotspots/hotspot_logic/activate_target.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="" />
+            <parameter name="Target Count" type="int" val="2" />
+            <parameter name="_target_placeholder_id" type="string" val="75" />
+            <parameter name="_target_placeholder_ids" type="string" val="6, 7" />
+            <parameter name="_trigger_placeholder_id" type="string" val="73" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-22.9988" t1="-0.70569" t2="44.0841" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="67" type_file="" special_type="0">
+        <parameters>
+            <parameter name="Dialogue" type="string" val="empty" />
+            <parameter name="DisplayName" type="string" val="Intruder" />
+            <parameter name="NumParticipants" type="int" val="3" />
+            <parameter name="Script" type="string" val='#name &quot;Intruder&quot;&#x0A;#participants 3&#x0A;set_character_pos 1 -22.1384 -1.89264 45.2828 -103&#x0A;set_character_pos 2 -9.31984 -1.60438 55.2574 145&#x0A;set_character_pos 3 -33.3617 -1.46884 51.3652 32&#x0A;send_character_message 2 &quot;set_head_target -23.7719 -1.14294 45.1809 0&quot;&#x0A;send_character_message 2 &quot;set_torso_target -23.7719 -1.14294 45.1809 0&quot;&#x0A;send_character_message 3 &quot;set_head_target -23.7719 -1.14294 45.1809 0&quot;&#x0A;send_character_message 3 &quot;set_torso_target -23.7719 -1.14294 45.1809 0&quot;&#x0A;send_character_message 1 &quot;set_head_target -9.30886 -0.695454 55.2397 0&quot;&#x0A;send_character_message 1 &quot;set_torso_target -9.30886 -0.695454 55.2397 0&quot;&#x0A;set_cam -23.8606 -1.43229 45.56 -10.44 -105.67 0 90&#x0A;say 2 &quot;Guard&quot; &quot;Hey, what are you doing back here?&quot;&#x0A;send_character_message 1 &quot;set_head_target -9.30217 -0.678298 55.1294 0&quot;&#x0A;send_character_message 1 &quot;set_torso_target -9.36791 -0.908911 55.2404 0&quot;&#x0A;set_cam -21.8691 -1.08053 44.4115 -17.97 140.71 1.82 90&#x0A;say 3 &quot;Other Guard&quot; &quot;Yeah! you aren&apos;t supposed to be here!&quot;&#x0A;send_character_message 1 &quot;set_head_target -9.30886 -0.695454 55.2397 0&quot;&#x0A;send_character_message 1 &quot;set_torso_target -9.30886 -0.695454 55.2397 0&quot;&#x0A;set_cam -23.8606 -1.43229 45.56 -10.44 -105.67 0 90&#x0A;say 2 &quot;First Guard&quot; &quot;Hey David,[pause 1] what you say we get im?&quot;&#x0A;set_cam -21.8691 -1.08053 44.4115 -17.97 140.71 1.82 90&#x0A;say 3 &quot;David&quot; &quot;Nah, Lukas. He&apos;s not worth the effort&quot;&#x0A;send_character_message 1 &quot;set_head_target -9.30886 -0.695454 55.2397 0&quot;&#x0A;send_character_message 1 &quot;set_torso_target -9.30886 -0.695454 55.2397 0&quot;&#x0A;set_cam -23.8606 -1.43229 45.56 -10.44 -105.67 0 90&#x0A;say 2 &quot;Lukas&quot; &quot;But I wanted to try out my shiny new sword&quot;&#x0A;set_cam -21.3508 -0.993859 45.4597 -11.78 94.42 0 90&#x0A;say 3 &quot;David&quot; &quot;Fine, but then we get back to work&quot;&#x0A;set_cam -22.1364 -0.871083 46.0241 -34.44 18.5 0 90&#x0A;say 1 &quot;Turner&quot; &quot;Here I go again...&quot;&#x0A;make_participants_aware&#x0A;' />
+            <parameter name="obj_1" type="int" val="68" />
+            <parameter name="obj_2" type="int" val="69" />
+            <parameter name="obj_3" type="int" val="70" />
+        </parameters>
+        <Connections>
+            <Connection id="67" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-22.6488" t1="-0.00568968" t2="44.0841" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="68" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="33" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-22.9988" t1="-0.00568968" t2="44.0841" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="69" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="57" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-23.3488" t1="-0.00568968" t2="44.0841" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="70" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="46" />
+        </Connections>
+    </PlaceholderObject>
+    <PathPointObject t0="-4.91559" t1="-2.04945" t2="58.5719" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="71" type_file="">
+        <parameters>
+            <parameter name="Type" type="string" val="Data/Animations/r_swordclean.anm" />
+            <parameter name="Wait" type="float" val="1e+008" />
+        </parameters>
+        <Connections />
+    </PathPointObject>
+    <EnvObject t0="-41.4414" t1="-0.132483" t2="57.3732" s0="1.33168" s1="1.95743" s2="2.70568" q0="0" q1="0" q2="0" q3="1" id="72" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
+        <parameters />
+    </EnvObject>
+    <PlaceholderObject t0="-20.8101" t1="5.57047" t2="54.3972" s0="0.0794571" s1="0.0794571" s2="0.0794571" q0="0" q1="0.0211147" q2="0" q3="0.999777" id="73" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="66" />
+        </Connections>
+    </PlaceholderObject>
+    <PathPointObject t0="-39.4769" t1="-1.66198" t2="55.9784" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="74" type_file="">
+        <parameters>
+            <parameter name="Type" type="string" val="Data/Animations/r_lean_on_well.anm" />
+            <parameter name="Wait" type="float" val="1e+008" />
+        </parameters>
+        <Connections />
+    </PathPointObject>
+    <Hotspot t0="-27.2449" t1="8.86092" t2="61.9852" s0="0.47366" s1="0.47366" s2="0.47366" q0="0" q1="-0.0260203" q2="0" q3="0.999661" id="76" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="Reach Guards" />
+            <parameter name="On-Achieve Count" type="int" val="1" />
+            <parameter name="On-Enable Count" type="int" val="0" />
+            <parameter name="On-Reset Count" type="int" val="0" />
+            <parameter name="_achieve_placeholder_id" type="string" val="79" />
+            <parameter name="_enable_placeholder_id" type="string" val="77" />
+            <parameter name="_on_achieve_placeholder_ids" type="string" val="82" />
+            <parameter name="_on_enable_placeholder_ids" type="string" val="" />
+            <parameter name="_on_reset_placeholder_ids" type="string" val="" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-28.2402" t1="9.90298" t2="62.882" s0="0.142098" s1="0.142098" s2="0.142098" q0="0" q1="-0.0260203" q2="0" q3="0.999661" id="77" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="76" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-21.1396" t1="6.33621" t2="58.2356" s0="0.145931" s1="0.145931" s2="0.145931" q0="0" q1="0" q2="0" q3="1" id="78" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="46" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-26.3482" t1="9.90298" t2="62.9805" s0="0.142098" s1="0.142098" s2="0.142098" q0="0" q1="-0.0260203" q2="0" q3="0.999661" id="79" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="76" />
+        </Connections>
+    </PlaceholderObject>
+    <Hotspot t0="-20.8726" t1="10.9434" t2="55.8366" s0="0.737017" s1="0.737017" s2="0.737017" q0="0" q1="0" q2="0" q3="1" id="80" type_file="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="Defeat Guards" />
+            <parameter name="On-Achieve Count" type="int" val="1" />
+            <parameter name="On-Enable Count" type="int" val="3" />
+            <parameter name="On-Reset Count" type="int" val="3" />
+            <parameter name="_achieve_placeholder_id" type="string" val="86" />
+            <parameter name="_enable_placeholder_id" type="string" val="81" />
+            <parameter name="_on_achieve_placeholder_ids" type="string" val="96" />
+            <parameter name="_on_enable_placeholder_ids" type="string" val="87, 88, 94" />
+            <parameter name="_on_reset_placeholder_ids" type="string" val="95, 102, 103" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-22.3466" t1="12.5648" t2="57.3106" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="81" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="80" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-26.2496" t1="9.90298" t2="61.0885" s0="0.142098" s1="0.142098" s2="0.142098" q0="0" q1="-0.0260203" q2="0" q3="0.999661" id="82" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="81" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-19.3986" t1="12.5648" t2="57.3106" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="86" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="80" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-22.3466" t1="12.5648" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="87" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="58" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-22.3466" t1="12.8228" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="88" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="73" />
         </Connections>
     </PlaceholderObject>
     <PlaceholderObject t0="-8.65462" t1="-2.42134" t2="36.4104" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="89" type_file="" special_type="0">
@@ -492,23 +677,66 @@
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="-11.2416" t1="-1.84182" t2="39.9758" s0="0.169097" s1="0.169097" s2="0.169097" q0="0" q1="0.481301" q2="0" q3="0.876555" id="91" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+    <Hotspot t0="-11.2416" t1="-1.84182" t2="39.9758" s0="0.169097" s1="0.169097" s2="0.169097" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="91" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="_target_placeholder_id" type="string" val="93" />
             <parameter name="_trigger_placeholder_id" type="string" val="92" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-11.1377" t1="-1.4698" t2="40.4427" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="0.481301" q2="0" q3="0.876555" id="92" type_file="" special_type="2">
+    <PlaceholderObject t0="-11.3498" t1="-1.46981" t2="40.2962" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="92" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="91" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-10.7747" t1="-1.4698" t2="39.872" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="0.481301" q2="0" q3="0.876555" id="93" type_file="" special_type="2">
+    <PlaceholderObject t0="-11.1334" t1="-1.46981" t2="39.6554" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="93" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="89" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-22.3466" t1="13.0808" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="94" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="-1" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-20.8726" t1="12.5648" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="95" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="58" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-19.3986" t1="12.5648" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="96" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="92" />
+        </Connections>
+    </PlaceholderObject>
+    <Hotspot t0="-32.0813" t1="10.0442" t2="65.0707" s0="0.29965" s1="0.29965" s2="0.29965" q0="0" q1="0" q2="0" q3="1" id="98" type_file="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml">
+        <parameters>
+            <parameter name="Editor Label" type="string" val="" />
+            <parameter name="Target Count" type="int" val="1" />
+            <parameter name="_target_placeholder_ids" type="string" val="99" />
+        </parameters>
+    </Hotspot>
+    <PlaceholderObject t0="-32.0813" t1="10.7034" t2="65.0707" s0="0.0898949" s1="0.0898949" s2="0.0898949" q0="0" q1="0" q2="0" q3="1" id="99" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="77" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-20.8726" t1="12.8228" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="102" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="73" />
+        </Connections>
+    </PlaceholderObject>
+    <PlaceholderObject t0="-20.8726" t1="13.0808" t2="54.3625" s0="0.221105" s1="0.221105" s2="0.221105" q0="0" q1="0" q2="0" q3="1" id="103" type_file="" special_type="2">
+        <parameters />
+        <Connections>
+            <Connection id="-1" />
         </Connections>
     </PlaceholderObject>
 </ActorObjects>
@@ -517,10 +745,14 @@
     <SpawnerItem display_name="Dog Spear" path="Data/Items/DogWeapons/DogSpear.xml" thumbnail_path="Data/UI/spawner/thumbs/Object/wspear.png" />
     <SpawnerItem display_name="Dog Sword" path="Data/Items/DogWeapons/DogSword.xml" thumbnail_path="Data/UI/spawner/thumbs/Interactive Objects/Dog Sword.png" />
     <SpawnerItem display_name="Cat Rapier" path="Data/Items/Rapier.xml" thumbnail_path="Data/UI/spawner/thumbs/Interactive Objects/Cat Rapier.png" />
-    <SpawnerItem display_name="Goal Hotspot" path="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
-    <SpawnerItem display_name="Enter Trigger" path="Data/Objects/Hotspots/hotspot_logic/enter_trigger.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
     <SpawnerItem display_name="Teleport Target" path="Data/Objects/Hotspots/hotspot_logic/teleport_target.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
     <SpawnerItem display_name="Raider Rabbit" path="Data/Objects/characters/raider_rabbit_actor.xml" thumbnail_path="Data/UI/spawner/thumbs/Character/raider_rabbit_actor.png" />
     <SpawnerItem display_name="Defeat Trigger" path="Data/Objects/Hotspots/hotspot_logic/defeat_trigger.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+    <SpawnerItem display_name="activate_characters.xml" path="Data/Objects/Hotspots/activate_characters.xml" thumbnail_path="empty_placeholder.png" />
+    <SpawnerItem display_name="Enter Trigger" path="Data/Objects/Hotspots/hotspot_logic/enter_trigger.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+    <SpawnerItem display_name="Path Point" path="Data/Objects/pathpoint/pathpoint.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/pathpoint.png" />
     <SpawnerItem display_name="Play Dialogue Target" path="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+    <SpawnerItem display_name="Activate Target" path="Data/Objects/Hotspots/hotspot_logic/activate_target.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+    <SpawnerItem display_name="Load Trigger" path="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
+    <SpawnerItem display_name="Goal Hotspot" path="Data/Objects/Hotspots/hotspot_logic/goal_hotspot.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 </RecentItems>
