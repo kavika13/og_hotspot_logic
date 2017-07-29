@@ -21,7 +21,7 @@
 
     <Item category="Hotspot Logic"
           title="Load Trigger"
-          path="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml"
+          path="Data/Objects/Hotspots/hotspot_logic/load_trigger_with_transform.xml"
           thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 
     <Item category="Hotspot Logic"
