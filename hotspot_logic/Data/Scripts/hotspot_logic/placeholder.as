@@ -22,11 +22,11 @@ Placeholder@ CreatePlaceholder(
     result.type = type;
     result.id_storage_param_name = id_storage_param_name;
     result.offset = offset;
-    LoadOrCreatePlaceholder(result, owner, params, label, editor_display_name);
+    LoadOrCreatePlaceholder_(result, owner, params, label, editor_display_name);
     return result;
 }
 
-void LoadOrCreatePlaceholder(
+void LoadOrCreatePlaceholder_(
         Placeholder@ placeholder, Object@ owner, ScriptParams@ params, string label, string editor_display_name) {
     int id = placeholder.id;
 
@@ -35,12 +35,12 @@ void LoadOrCreatePlaceholder(
     }
 
     bool is_new_obj;
-    Object@ obj = LoadOrCreatePlaceholderObject(id, is_new_obj);
+    Object@ obj = LoadOrCreatePlaceholderObject_(id, is_new_obj);
     id = obj.GetID();
 
-    SetPlaceholderState(obj, placeholder.type == kHotspotInputTerminalPlaceholder);  // TODO: Use a switch, maybe just pass on
-    SetPlaceholderEditorLabel(obj, label, 3);
-    SetPlaceholderEditorDisplayName(obj, editor_display_name);
+    SetPlaceholderState_(obj, placeholder.type == kHotspotInputTerminalPlaceholder);  // TODO: Use a switch, maybe just pass on
+    SetPlaceholderEditorLabel_(obj, label, 3);
+    SetPlaceholderEditorDisplayName_(obj, editor_display_name);
 
     string new_id_storage_param_value = "" + id;
     placeholder.id = id;
@@ -52,7 +52,7 @@ void LoadOrCreatePlaceholder(
     }
 }
 
-Object@ LoadOrCreatePlaceholderObject(int id, bool &out created) {
+Object@ LoadOrCreatePlaceholderObject_(int id, bool &out created) {
     if(id != -1 && ObjectExists(id)) {
         Object@ obj = ReadObjectFromID(id);
 
@@ -85,7 +85,7 @@ void ResetPlaceholderEditorLabel(Placeholder@ placeholder, string label) {
 
     if(id != -1 && ObjectExists(id)) {
         Object@ target_placeholder = ReadObjectFromID(id);
-        SetPlaceholderEditorLabel(target_placeholder, label, 3);
+        SetPlaceholderEditorLabel_(target_placeholder, label, 3);
     }
 }
 
@@ -94,7 +94,7 @@ void ResetPlaceholderEditorDisplayName(Placeholder@ placeholder, string editor_d
 
     if(id != -1 && ObjectExists(id)) {
         Object@ target_placeholder = ReadObjectFromID(id);
-        SetPlaceholderEditorDisplayName(target_placeholder, editor_display_name);
+        SetPlaceholderEditorDisplayName_(target_placeholder, editor_display_name);
     }
 }
 
@@ -117,13 +117,13 @@ void UpdatePlaceholderTransform(Placeholder@ placeholder, Object@ owner) {
         Object@ target_placeholder = ReadObjectFromID(id);
         target_placeholder.SetTranslation(
             owner.GetTranslation() +
-            Mult(quat, GetPlaceholderPos(owner, placeholder.offset)));
+            Mult(quat, GetPlaceholderPos_(owner, placeholder.offset)));
         target_placeholder.SetRotation(quat);
         target_placeholder.SetScale(owner.GetScale() * 0.3f);
     }
 }
 
-vec3 GetPlaceholderPos(Object@ owner, vec3 offset) {
+vec3 GetPlaceholderPos_(Object@ owner, vec3 offset) {
     return vec3(
         offset.x * owner.GetScale().x * 2.0f,
         (offset.y + 1.1f) * owner.GetScale().y * 2.0f,
@@ -143,7 +143,7 @@ Object@ GetPlaceholderTarget(Placeholder@ placeholder) {
 }
 
 void SendPlaceholderTargetScriptMessage(Placeholder@ placeholder, Object@ owner) {
-    RelayScriptMessageToPlaceholderTarget(GetPlaceholderTarget(placeholder), owner);
+    RelayScriptMessageToPlaceholderTarget_(GetPlaceholderTarget(placeholder), owner);
 }
 
 void LogPlaceholderState(Placeholder@ placeholder, Object@ owner) {
@@ -196,11 +196,11 @@ PlaceholderArray@ CreatePlaceholderArray(
     result.id_storage_param_name = id_storage_param_name;
     result.offset = offset;
     result.layout = layout;
-    LoadPlaceholderArrayFromStorageParam(result, params, label, editor_display_name);
+    LoadPlaceholderArrayFromStorageParam_(result, params, label, editor_display_name);
     return result;
 }
 
-void LoadPlaceholderArrayFromStorageParam(
+void LoadPlaceholderArrayFromStorageParam_(
         PlaceholderArray@ placeholder_array, ScriptParams@ params, string label, string editor_display_name) {
     if(params.HasParam(placeholder_array.id_storage_param_name)) {
         string old_id_storage_param_value = params.GetString(placeholder_array.id_storage_param_name);
@@ -217,11 +217,11 @@ void LoadPlaceholderArrayFromStorageParam(
                 Object@ obj = ReadObjectFromID(id);
 
                 if(obj.GetType() == _placeholder_object) {
-                    SetPlaceholderState(obj);
+                    SetPlaceholderState_(obj);
                     if(count == 0) {
-                        SetPlaceholderEditorLabel(obj, label);
+                        SetPlaceholderEditorLabel_(obj, label);
                     }
-                    SetPlaceholderEditorDisplayName(obj, editor_display_name + " " + (count + 1));
+                    SetPlaceholderEditorDisplayName_(obj, editor_display_name + " " + (count + 1));
                     new_id_storage_param_value += (count > 0 ? ", " : "") + id;
                     placeholder_array.ids.insertLast(id);
                     ++count;
@@ -263,13 +263,13 @@ void SyncPlaceholderArrayInstances(
     int previous_count = int(placeholder_array.ids.length());
 
     if(target_count > previous_count) {
-        AddPlaceholderArrayInstances(placeholder_array, params, owner, target_count, label, editor_display_name);
+        AddPlaceholderArrayInstances_(placeholder_array, params, owner, target_count, label, editor_display_name);
     } else if(target_count < previous_count) {
-        RemovePlaceholderArrayInstances(placeholder_array, params, target_count);
+        RemovePlaceholderArrayInstances_(placeholder_array, params, target_count);
     }
 }
 
-void AddPlaceholderArrayInstances(
+void AddPlaceholderArrayInstances_(
         PlaceholderArray@ placeholder_array, ScriptParams@ params, Object@ owner, int new_count, string label, string editor_display_name) {
     int previous_count = int(placeholder_array.ids.length());
     new_count = max(new_count, 0);
@@ -281,11 +281,11 @@ void AddPlaceholderArrayInstances(
         int new_target_placeholder_id = CreateObject(k_placeholder_object_path, false);
 
         Object@ new_target_placeholder = ReadObjectFromID(new_target_placeholder_id);
-        SetPlaceholderState(new_target_placeholder);
+        SetPlaceholderState_(new_target_placeholder);
         if(current_target_index == 1) {
-            SetPlaceholderEditorLabel(new_target_placeholder, label);
+            SetPlaceholderEditorLabel_(new_target_placeholder, label);
         }
-        SetPlaceholderEditorDisplayName(new_target_placeholder, editor_display_name + " " + current_target_index);
+        SetPlaceholderEditorDisplayName_(new_target_placeholder, editor_display_name + " " + current_target_index);
         placeholder_array.ids.insertLast(new_target_placeholder_id);
         placeholder_array.id_storage_param_value += (i > 1 || previous_count > 0 ? ", " : "") + new_target_placeholder_id;
     }
@@ -295,7 +295,7 @@ void AddPlaceholderArrayInstances(
     UpdatePlaceholderArrayTransforms(placeholder_array, owner);
 }
 
-void RemovePlaceholderArrayInstances(PlaceholderArray@ placeholder_array, ScriptParams@ params, int new_count) {
+void RemovePlaceholderArrayInstances_(PlaceholderArray@ placeholder_array, ScriptParams@ params, int new_count) {
     int previous_count = int(placeholder_array.ids.length());
     new_count = max(new_count, 0);
 
@@ -320,7 +320,7 @@ void ResetPlaceholderArrayEditorLabel(PlaceholderArray@ placeholder_array, strin
 
         if(id != -1 && ObjectExists(id)) {
             Object@ target_placeholder = ReadObjectFromID(id);
-            SetPlaceholderEditorDisplayName(target_placeholder, label);
+            SetPlaceholderEditorDisplayName_(target_placeholder, label);
         }
     }
 }
@@ -331,7 +331,7 @@ void ResetPlaceholderArrayEditorDisplayNames(PlaceholderArray@ placeholder_array
 
         if(id != -1 && ObjectExists(id)) {
             Object@ target_placeholder = ReadObjectFromID(id);
-            SetPlaceholderEditorDisplayName(target_placeholder, editor_display_name + " " + (i + 1));
+            SetPlaceholderEditorDisplayName_(target_placeholder, editor_display_name + " " + (i + 1));
         }
     }
 }
@@ -348,7 +348,7 @@ void UpdatePlaceholderArrayTransforms(PlaceholderArray@ placeholder_array, Objec
             Object@ target_placeholder = ReadObjectFromID(id);
             target_placeholder.SetTranslation(
                 owner.GetTranslation() +
-                Mult(quat, GetArrayPlaceholderPos(
+                Mult(quat, GetPlaceholderArrayPos_(
                     owner, placeholder_array.offset, placeholder_array.layout, placeholder_count, i + 1)));
             target_placeholder.SetRotation(quat);
             target_placeholder.SetScale(owner.GetScale() * 0.3f);
@@ -356,7 +356,7 @@ void UpdatePlaceholderArrayTransforms(PlaceholderArray@ placeholder_array, Objec
     }
 }
 
-vec3 GetArrayPlaceholderPos(Object@ owner, vec3 offset, PlacholderArrayLayout layout, int instance_count, int current_index) {
+vec3 GetPlaceholderArrayPos_(Object@ owner, vec3 offset, PlacholderArrayLayout layout, int instance_count, int current_index) {
     if(layout != kVerticalPlaceholderArrayLayout) {  // TODO: Use a switch
         return vec3(
             (instance_count * 0.5f + 0.5f - current_index) * owner.GetScale().x * 0.35f +
@@ -386,7 +386,7 @@ Object@ GetPlaceholderArrayTargetAtIndex(PlaceholderArray@ placeholder_array, ui
 
 void SendScriptMessageToPlaceholderArrayTargets(PlaceholderArray@ placeholder_array, Object@ owner) {
     for(uint i = 0; i < placeholder_array.ids.length(); i++) {
-        RelayScriptMessageToPlaceholderTarget(GetPlaceholderArrayTargetAtIndex(placeholder_array, i), owner);
+        RelayScriptMessageToPlaceholderTarget_(GetPlaceholderArrayTargetAtIndex(placeholder_array, i), owner);
     }
 }
 
@@ -426,7 +426,7 @@ void DisposePlaceholderArray(PlaceholderArray@ placeholder_array) {
 
 // --- Per instance setup ---
 
-void SetPlaceholderState(Object@ target_placeholder, bool is_input_for_hotspot = false) {
+void SetPlaceholderState_(Object@ target_placeholder, bool is_input_for_hotspot = false) {
     PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(target_placeholder);
     inner_placeholder_object.SetSpecialType(kPlayerConnect);
 
@@ -472,18 +472,18 @@ bool SetPlaceholderAllowedConnectionTypes_(int object_id, const EntityType[]@ al
     return result;
 }
 
-void SetPlaceholderEditorLabel(Object@ target_placeholder, string label_value, int scale = 6) {
+void SetPlaceholderEditorLabel_(Object@ target_placeholder, string label_value, int scale = 6) {
     target_placeholder.SetEditorLabel(label_value);
     target_placeholder.SetEditorLabelScale(scale);
     target_placeholder.SetEditorLabelOffset(vec3(0));
 }
 
-void SetPlaceholderEditorDisplayName(Object@ target_placeholder, string editor_display_name) {
+void SetPlaceholderEditorDisplayName_(Object@ target_placeholder, string editor_display_name) {
     PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(target_placeholder);
     inner_placeholder_object.SetEditorDisplayName(editor_display_name);
 }
 
-void RelayScriptMessageToPlaceholderTarget(Object@ target_obj, Object@ owner) {
+void RelayScriptMessageToPlaceholderTarget_(Object@ target_obj, Object@ owner) {
     if(target_obj is null || !ObjectExists(target_obj.GetID())) {
         return;
     }
