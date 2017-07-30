@@ -1,0 +1,7 @@
+<?xml version="2.0" ?>
+<Type>saved</Type>
+<ActorObjects>
+    <Hotspot t0="0.0" t1="0.0" t2="0.0" s0="0.25" s1="0.25" s2="0.25" q0="0" q1="0" q2="0" q3="1" id="0" type_file="Data/Objects/Hotspots/hotspot_logic/defeat_trigger.xml">
+        <parameters/>
+    </Hotspot>
+</ActorObjects>

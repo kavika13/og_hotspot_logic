@@ -31,7 +31,7 @@
 
     <Item category="Hotspot Logic"
           title="Defeat Trigger"
-          path="Data/Objects/Hotspots/hotspot_logic/defeat_trigger.xml"
+          path="Data/Objects/Hotspots/hotspot_logic/defeat_trigger_with_transform.xml"
           thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 
     <Item category="Hotspot Logic"
@@ -46,12 +46,12 @@
 
     <Item category="Hotspot Logic"
           title="Play Dialogue Target"
-          path="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml"
+          path="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target_with_transform.xml"
           thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 
     <Item category="Hotspot Logic"
           title="Activate Target"
-          path="Data/Objects/Hotspots/hotspot_logic/activate_target.xml"
+          path="Data/Objects/Hotspots/hotspot_logic/activate_target_with_transform.xml"
           thumbnail="Data/UI/spawner/thumbs/Utility/light_placeholder.png" />
 
     <LevelHookFile>Data/Scripts/hotspot_logic/level_mod_hook.as</LevelHookFile>
