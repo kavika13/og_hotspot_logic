@@ -30,7 +30,7 @@
     <RayToSun r0="-0.931132" r1="0.259464" r2="0.256265" />
 </Sky>
 <ActorObjects>
-    <Hotspot t0="-49.2014" t1="1.90396" t2="17.0297" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="0" type_file="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml">
+    <Hotspot t0="-47.914" t1="16.1217" t2="20.9026" s0="1" s1="1" s2="1" q0="1" q1="0" q2="0" q3="0" id="0" type_file="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="Target Count" type="int" val="1" />
@@ -40,10 +40,10 @@
     <EnvObject t0="-26.6538" t1="-3.42134" t2="31.9171" s0="49.5541" s1="1" s2="49.0398" q0="0" q1="0" q2="0" q3="1" id="1" color_r="0" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <CameraObject t0="-22.6096" t1="12.6192" t2="52.0976" s0="1" s1="1" s2="1" q0="0.00303096" q1="0.996959" q2="-0.0572407" q3="0.0527897" id="2">
+    <CameraObject t0="-39.0413" t1="18.408" t2="-6.76146" s0="1" s1="1" s2="1" q0="0.0100358" q1="0.989109" q2="-0.0810772" q3="0.122432" id="2">
         <parameters />
     </CameraObject>
-    <PlaceholderObject t0="-49.2014" t1="4.10396" t2="17.0297" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="3" type_file="" special_type="2">
+    <PlaceholderObject t0="-47.914" t1="13.9217" t2="20.9026" s0="0.3" s1="0.3" s2="0.3" q0="1" q1="0" q2="0" q3="0" id="3" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="12" />
@@ -708,14 +708,14 @@
             <Connection id="92" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="-32.0813" t1="10.0442" t2="65.0707" s0="0.29965" s1="0.29965" s2="0.29965" q0="0" q1="0" q2="0" q3="1" id="98" type_file="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml">
+    <Hotspot t0="-28.1876" t1="19.0565" t2="62.9394" s0="1" s1="1" s2="1" q0="0" q1="0" q2="-1" q3="0" id="98" type_file="Data/Objects/Hotspots/hotspot_logic/load_trigger.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="Target Count" type="int" val="1" />
             <parameter name="_target_placeholder_ids" type="string" val="99" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-32.0813" t1="10.7034" t2="65.0707" s0="0.0898949" s1="0.0898949" s2="0.0898949" q0="0" q1="0" q2="0" q3="1" id="99" type_file="" special_type="2">
+    <PlaceholderObject t0="-28.1876" t1="16.8565" t2="62.9394" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="-1" q3="0" id="99" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="77" />
