@@ -58,10 +58,19 @@ void Update() {
     if(EditorModeActive()) {
         Object@ hotspot_obj = ReadObjectFromID(hotspot.GetID());
         UpdatePlaceholderArrayTransforms(g_target_placeholders, hotspot_obj);
+
+        vec3 hotspot_square_scale = ClampToSquareAspectRatio(hotspot_obj.GetScale());
         mat4 billboard_transform = ComposeBillboardTransform(
-            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_obj.GetScale(), camera.GetUpVector());
+            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_square_scale, camera.GetUpVector());
         DrawDiskIcon(billboard_transform, vec4(0.0f, 0.0f, 1.0f, 0.5f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderArrayIcon(g_target_placeholders, DrawLightningBoltIcon, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
         DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);            
+
+        if(hotspot_obj.IsSelected() || IsAnyPlaceholderArrayItemSelected(g_target_placeholders)) {
+            ResetPlaceholderArrayEditorLabel(g_target_placeholders, "On-Load");
+        } else {
+            ResetPlaceholderArrayEditorLabel(g_target_placeholders, "");
+        }
     }
 }
 
@@ -95,5 +104,5 @@ string GetMainEditorLabel(string label_value) {
 }
 
 string GetTargetPlaceholderLabelName(string main_editor_label) {
-    return "Load Trigger" + " \"" + main_editor_label + "\" " + "Target";
+    return "Load Trigger" + " \"" + main_editor_label + "\" " + "On-Load";
 }
