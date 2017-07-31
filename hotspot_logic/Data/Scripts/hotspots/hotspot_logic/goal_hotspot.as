@@ -88,7 +88,36 @@ void Update() {
         UpdatePlaceholderArrayTransforms(g_on_enable_placeholders, hotspot_obj);
         UpdatePlaceholderArrayTransforms(g_on_reset_placeholders, hotspot_obj);
         UpdatePlaceholderArrayTransforms(g_on_achieve_placeholders, hotspot_obj);
+
+        vec3 hotspot_square_scale = ClampToSquareAspectRatio(hotspot_obj.GetScale());
+        mat4 billboard_transform = ComposeBillboardTransform(
+            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_square_scale, camera.GetUpVector());
+        DrawPlaceholderIcon(g_enable_placeholder, DrawPowerIcon, vec4(0.0f, 1.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderIcon(g_achieve_placeholder, DrawFlagIcon, vec4(0.0f, 1.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderArrayIcon(g_on_enable_placeholders, DrawPowerIcon, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderArrayIcon(g_on_reset_placeholders, DrawPowerIcon, vec4(1.0f, 0.5f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);  // TODO: Reset/recycle icon
+        DrawPlaceholderArrayIcon(g_on_achieve_placeholders, DrawFlagIcon, vec4(0.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawFlagIcon(billboard_transform, vec4(0.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
         DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);            
+
+        if(hotspot_obj.IsSelected() ||
+                IsPlaceholderSelected(g_enable_placeholder) ||
+                IsPlaceholderSelected(g_achieve_placeholder) ||
+                IsAnyPlaceholderArrayItemSelected(g_on_enable_placeholders) ||
+                IsAnyPlaceholderArrayItemSelected(g_on_reset_placeholders) ||
+                IsAnyPlaceholderArrayItemSelected(g_on_achieve_placeholders)) {
+            ResetPlaceholderEditorLabel(g_enable_placeholder, "Enable");
+            ResetPlaceholderEditorLabel(g_achieve_placeholder, "Achieve");
+            ResetPlaceholderArrayEditorLabel(g_on_enable_placeholders, "On-Enable");
+            ResetPlaceholderArrayEditorLabel(g_on_reset_placeholders, "On-Reset");
+            ResetPlaceholderArrayEditorLabel(g_on_achieve_placeholders, "On-Achieve");
+        } else {
+            ResetPlaceholderEditorLabel(g_enable_placeholder, "");
+            ResetPlaceholderEditorLabel(g_achieve_placeholder, "");
+            ResetPlaceholderArrayEditorLabel(g_on_enable_placeholders, "");
+            ResetPlaceholderArrayEditorLabel(g_on_reset_placeholders, "");
+            ResetPlaceholderArrayEditorLabel(g_on_achieve_placeholders, "");
+        }
     }
 }
 
