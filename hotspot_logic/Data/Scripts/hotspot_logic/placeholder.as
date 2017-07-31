@@ -578,7 +578,7 @@ int DrawPlaceholderIcon_(
         Object@ placeholder_obj, DRAW_ICON_CALLBACK@ draw_icon,
         const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard) {
     if(draw_as_billboard) {
-        vec3 billboard_scale = placeholder_obj.GetScale() * 0.5f;
+        vec3 billboard_scale = placeholder_obj.GetScale();
         float min_scale_component = min(min(billboard_scale.x, billboard_scale.y), billboard_scale.z);
         billboard_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
 
@@ -587,7 +587,7 @@ int DrawPlaceholderIcon_(
 
         return draw_icon(billboard_transform, color, lifetime);
     } else {
-        vec3 world_scale = placeholder_obj.GetScale() * 0.5f;
+        vec3 world_scale = placeholder_obj.GetScale();
         float min_scale_component = min(min(world_scale.x, world_scale.y), world_scale.z);
         world_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
 
