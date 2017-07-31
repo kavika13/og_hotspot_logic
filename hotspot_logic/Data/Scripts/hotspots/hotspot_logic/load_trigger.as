@@ -1,4 +1,3 @@
-#include "hotspot_logic/editor_label.as"
 #include "hotspot_logic/placeholder.as"
 #include "hotspot_logic/draw_icon_lines.as"
 

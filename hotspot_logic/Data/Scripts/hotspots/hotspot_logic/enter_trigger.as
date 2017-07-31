@@ -1,4 +1,3 @@
-#include "hotspot_logic/editor_label.as"
 #include "hotspot_logic/placeholder.as"
 
 // TODO: Debug log warning spam that sometimes shows up on undo/redo -> [w][__]: scenegraph.cpp: 857: Requested an object with id 3 but found none. Last info known of this id is: 3, Enter Trigger "" Target 1
