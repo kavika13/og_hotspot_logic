@@ -51,10 +51,22 @@ void Update() {
     if(EditorModeActive()) {
         UpdatePlaceholderTransform(g_trigger_placeholder, hotspot_obj);
         UpdatePlaceholderTransform(g_target_placeholder, hotspot_obj);
+
+        vec3 hotspot_square_scale = ClampToSquareAspectRatio(hotspot_obj.GetScale());
         mat4 billboard_transform = ComposeBillboardTransform(
-            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_obj.GetScale(), camera.GetUpVector());
+            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_square_scale, camera.GetUpVector());
         DrawPlayIcon(billboard_transform, vec4(0.0f, 1.0f, 0.0f, 0.5f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderIcon(g_target_placeholder, DrawTargetIcon, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderIcon(g_trigger_placeholder, DrawPowerPlugIcon, vec4(0.0f, 1.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
         DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);            
+
+        if(hotspot_obj.IsSelected() || IsPlaceholderSelected(g_trigger_placeholder) || IsPlaceholderSelected(g_target_placeholder)) {
+            ResetPlaceholderEditorLabel(g_trigger_placeholder, "Trigger");
+            ResetPlaceholderEditorLabel(g_target_placeholder, "Target");
+        } else {
+            ResetPlaceholderEditorLabel(g_trigger_placeholder, "");
+            ResetPlaceholderEditorLabel(g_target_placeholder, "");
+        }
     }
 }
 
