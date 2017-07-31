@@ -129,6 +129,62 @@ int DrawLightningBoltIcon(const mat4 &in transform, const vec4 &in color, DrawLi
     return DebugDrawLines(lightning_bolt_icon_lines, color, int(lifetime));
 }
 
+int DrawTargetIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+    vec3[] target_icon_lines = {
+        // Reticle lines
+        vec3(0.0f, 1.0f, 0.0f), vec3(0.0f, 0.75f, 0.0f),    // Top
+        vec3(0.0f, -1.0f, 0.0f), vec3(0.0f, -0.75f, 0.0f),  // Bottom
+        vec3(-1.0f, 0.0f, 0.0f), vec3(-0.75f, 0.0f, 0.0f),  // Left
+        vec3(1.0f, 0.0f, 0.0f), vec3(0.75f, 0.0f, 0.0f),    // Right
+
+        // Outer circle
+        vec3(0.0000f, 0.8750f, 0.0f), vec3(0.1707f, 0.8582f, 0.0f),
+        vec3(0.1707f, 0.8582f, 0.0f), vec3(0.3348f, 0.8084f, 0.0f),
+        vec3(0.3348f, 0.8084f, 0.0f), vec3(0.4861f, 0.7275f, 0.0f),
+        vec3(0.4861f, 0.7275f, 0.0f), vec3(0.6187f, 0.6187f, 0.0f),
+        vec3(0.6187f, 0.6187f, 0.0f), vec3(0.7275f, 0.4861f, 0.0f),
+        vec3(0.7275f, 0.4861f, 0.0f), vec3(0.8084f, 0.3348f, 0.0f),
+        vec3(0.8084f, 0.3348f, 0.0f), vec3(0.8582f, 0.1707f, 0.0f),
+        vec3(0.8582f, 0.1707f, 0.0f), vec3(0.8750f, 0.0000f, 0.0f),
+        vec3(0.8750f, 0.0000f, 0.0f), vec3(0.8582f, -0.1707f, 0.0f),
+        vec3(0.8582f, -0.1707f, 0.0f), vec3(0.8084f, -0.3348f, 0.0f),
+        vec3(0.8084f, -0.3348f, 0.0f), vec3(0.7275f, -0.4861f, 0.0f),
+        vec3(0.7275f, -0.4861f, 0.0f), vec3(0.6187f, -0.6187f, 0.0f),
+        vec3(0.6187f, -0.6187f, 0.0f), vec3(0.4861f, -0.7275f, 0.0f),
+        vec3(0.4861f, -0.7275f, 0.0f), vec3(0.3348f, -0.8084f, 0.0f),
+        vec3(0.3348f, -0.8084f, 0.0f), vec3(0.1707f, -0.8582f, 0.0f),
+        vec3(0.1707f, -0.8582f, 0.0f), vec3(0.0000f, -0.8750f, 0.0f),
+        vec3(0.0000f, -0.8750f, 0.0f), vec3(-0.1707f, -0.8582f, 0.0f),
+        vec3(-0.1707f, -0.8582f, 0.0f), vec3(-0.3348f, -0.8084f, 0.0f),
+        vec3(-0.3348f, -0.8084f, 0.0f), vec3(-0.4861f, -0.7275f, 0.0f),
+        vec3(-0.4861f, -0.7275f, 0.0f), vec3(-0.6187f, -0.6187f, 0.0f),
+        vec3(-0.6187f, -0.6187f, 0.0f), vec3(-0.7275f, -0.4861f, 0.0f),
+        vec3(-0.7275f, -0.4861f, 0.0f), vec3(-0.8084f, -0.3348f, 0.0f),
+        vec3(-0.8084f, -0.3348f, 0.0f), vec3(-0.8582f, -0.1707f, 0.0f),
+        vec3(-0.8582f, -0.1707f, 0.0f), vec3(-0.8750f, -0.0000f, 0.0f),
+        vec3(-0.8750f, -0.0000f, 0.0f), vec3(-0.8582f, 0.1707f, 0.0f),
+        vec3(-0.8582f, 0.1707f, 0.0f), vec3(-0.8084f, 0.3348f, 0.0f),
+        vec3(-0.8084f, 0.3348f, 0.0f), vec3(-0.7275f, 0.4861f, 0.0f),
+        vec3(-0.7275f, 0.4861f, 0.0f), vec3(-0.6187f, 0.6187f, 0.0f),
+        vec3(-0.6187f, 0.6187f, 0.0f), vec3(-0.4861f, 0.7275f, 0.0f),
+        vec3(-0.4861f, 0.7275f, 0.0f), vec3(-0.3348f, 0.8084f, 0.0f),
+        vec3(-0.3348f, 0.8084f, 0.0f), vec3(-0.1707f, 0.8582f, 0.0f),
+        vec3(-0.1707f, 0.8582f, 0.0f), vec3(0.0000f, 0.8750f, 0.0f),
+
+        // Draw inner reticle
+        vec3(0.0f, 0.125f, 0.0f), vec3(-0.125f, 0.0f, 0.0),  // Top left
+        vec3(0.0f, 0.125f, 0.0f), vec3(0.125f, 0.0f, 0.0),  // Top right
+        vec3(0.0f, -0.125f, 0.0f), vec3(-0.125f, 0.0f, 0.0),  // Bottom left
+        vec3(0.0f, -0.125f, 0.0f), vec3(0.125f, 0.0f, 0.0),  // Bottom right
+    };
+
+    for(uint i = 0, len = target_icon_lines.length(); i < len; i++) {
+        target_icon_lines[i] = transform * target_icon_lines[i];
+    }
+
+    return DebugDrawLines(target_icon_lines, color, int(lifetime));
+}
+
 mat4 ComposeBillboardTransform(
         const vec3 &in translation, const vec3 &in rotation_normal, const vec3 &in scale,
         const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
