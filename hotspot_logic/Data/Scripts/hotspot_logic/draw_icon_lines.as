@@ -53,6 +53,24 @@ void DrawPlayIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime l
     DebugDrawLines(play_icon_lines, color, int(lifetime));
 }
 
+void DrawFlagIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+    vec3[] flag_icon_lines = {
+        vec3(-0.6f, 1.0f, 0.0f), vec3(0.6f, 0.5f, 0.0f),    // Top
+        vec3(-0.6f, 0.0f, 0.0f), vec3(0.6f, 0.5f, 0.0f),  // Bottom
+
+        vec3(-0.7f, 1.0f, 0.0f), vec3(-0.6f, 1.0f, 0.0f),  // Pole Top
+        vec3(-0.7f, -1.0f, 0.0f), vec3(-0.6f, -1.0f, 0.0f),  // Pole Bottom
+        vec3(-0.7f, 1.0f, 0.0f), vec3(-0.7f, -1.0f, 0.0f),  // Pole Left
+        vec3(-0.6f, 1.0f, 0.0f), vec3(-0.6f, -1.0f, 0.0f),  // Pole Right
+    };
+
+    for(uint i = 0, len = flag_icon_lines.length(); i < len; i++) {
+        flag_icon_lines[i] = transform * flag_icon_lines[i];
+    }
+
+    DebugDrawLines(flag_icon_lines, color, int(lifetime));
+}
+
 mat4 GetBillboardTransform(vec3 translation, vec3 rotation_normal, vec3 scale, const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
     const vec3 right_direction = normalize(cross(rotation_normal, up_direction));
     const vec3 new_up_direction = cross(right_direction, rotation_normal);
