@@ -7,7 +7,7 @@ bool g_is_initializing = true;
 bool g_are_all_targets_defeated = false;
 int[] g_defeated_target_ids;
 
-EditorLabel g_main_editor_label;
+string g_main_editor_label_value;
 PlaceholderArray g_target_placeholders;
 PlaceholderArray g_on_defeat_placeholders;
 
@@ -29,8 +29,8 @@ void SetParameters() {
 
     params.AddString("Editor Label", "");
     string main_editor_label_param = params.GetString("Editor Label");
-    if(main_editor_label_param != g_main_editor_label.value) {
-        SetEditorLabelValue(g_main_editor_label, hotspot_obj, GetMainEditorLabel(main_editor_label_param));
+    if(main_editor_label_param != g_main_editor_label_value) {
+        g_main_editor_label_value = main_editor_label_param;
         ResetPlaceholderArrayEditorDisplayNames(g_target_placeholders, GetTargetPlaceholderLabelName(main_editor_label_param));
     }
 
@@ -66,17 +66,10 @@ void Update() {
 
     if(EditorModeActive()) {
         Object@ hotspot_obj = ReadObjectFromID(hotspot.GetID());
-        ActivateEditorLabel(g_main_editor_label, hotspot_obj);
-        UpdateEditorLabel(g_main_editor_label, hotspot_obj);
         UpdatePlaceholderArrayTransforms(g_target_placeholders, hotspot_obj);
         UpdatePlaceholderArrayTransforms(g_on_defeat_placeholders, hotspot_obj);
-    } else {
-        DeactivateEditorLabel(g_main_editor_label);
+        DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);        
     }
-}
-
-void Dispose() {
-    DisposeEditorLabel(g_main_editor_label);
 }
 
 void ReceiveMessage(string message) {
@@ -128,10 +121,7 @@ void ReceiveMessage(string message) {
 }
 
 void LoadFromParams() {
-    DisposeEditorLabel(g_main_editor_label);
-
     string editor_label = params.HasParam("Editor Label") ? params.GetString("Editor Label") : "";
-    g_main_editor_label = CreateEditorLabel(ReadObjectFromID(hotspot.GetID()), GetMainEditorLabel(editor_label));
 
     DisposePlaceholderArray(g_target_placeholders);
     g_target_placeholders = CreatePlaceholderArray(

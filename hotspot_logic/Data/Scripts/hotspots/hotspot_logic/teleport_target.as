@@ -5,7 +5,7 @@
 
 bool g_is_initializing = true;
 
-EditorLabel g_main_editor_label;
+string g_main_editor_label_value;
 Placeholder g_trigger_placeholder;
 Placeholder g_target_placeholder;
 
@@ -27,8 +27,8 @@ void SetParameters() {
 
     params.AddString("Editor Label", "");
     string main_editor_label_param = params.GetString("Editor Label");
-    if(main_editor_label_param != g_main_editor_label.value) {
-        SetEditorLabelValue(g_main_editor_label, hotspot_obj, GetMainEditorLabel(main_editor_label_param));
+    if(main_editor_label_param != g_main_editor_label_value) {
+        g_main_editor_label_value = main_editor_label_param;
         ResetPlaceholderEditorDisplayName(g_trigger_placeholder, GetTriggerPlaceholderLabelName(main_editor_label_param));
         ResetPlaceholderEditorDisplayName(g_target_placeholder, GetTargetPlaceholderLabelName(main_editor_label_param));
     }
@@ -48,17 +48,10 @@ void Update() {
     // Target points at the player to teleport, not the parent hotspot
 
     if(EditorModeActive()) {
-        ActivateEditorLabel(g_main_editor_label, hotspot_obj);
-        UpdateEditorLabel(g_main_editor_label, hotspot_obj);
         UpdatePlaceholderTransform(g_trigger_placeholder, hotspot_obj);
         UpdatePlaceholderTransform(g_target_placeholder, hotspot_obj);
-    } else {
-        DeactivateEditorLabel(g_main_editor_label);
+        DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);            
     }
-}
-
-void Dispose() {
-    DisposeEditorLabel(g_main_editor_label);
 }
 
 void ReceiveMessage(string message) {
@@ -106,10 +99,8 @@ void ReceiveMessage(string message) {
 
 void LoadFromParams() {
     Object@ hotspot_obj = ReadObjectFromID(hotspot.GetID());
-    DisposeEditorLabel(g_main_editor_label);
 
     string editor_label = params.HasParam("Editor Label") ? params.GetString("Editor Label") : "";
-    g_main_editor_label = CreateEditorLabel(hotspot_obj, GetMainEditorLabel(editor_label));
 
     DisposePlaceholder(g_trigger_placeholder);
     g_trigger_placeholder = CreatePlaceholder(
