@@ -273,6 +273,22 @@ uint GetPlaceholderArrayCount(PlaceholderArray@ placeholder_array) {
     return placeholder_array.ids.length();
 }
 
+bool IsAnyPlaceholderArrayItemSelected(PlaceholderArray@ placeholder_array) {
+    for(uint i = 0, len = placeholder_array.ids.length(); i < len; i++) {
+        int id = placeholder_array.ids[i];
+
+        if(id != -1 && ObjectExists(id)) {
+            Object@ obj = ReadObjectFromID(id);
+
+            if(obj.IsSelected()) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 void ProtectPlaceholderArrayParams(PlaceholderArray@ placeholder_array, ScriptParams@ params) {
     params.AddString(placeholder_array.id_storage_param_name, "");
     string updated_placeholder_ids = params.GetString(placeholder_array.id_storage_param_name);
