@@ -40,7 +40,7 @@
     <EnvObject t0="-26.6538" t1="-3.42134" t2="31.9171" s0="49.5541" s1="1" s2="49.0398" q0="0" q1="0" q2="0" q3="1" id="1" color_r="0" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <CameraObject t0="-14.5635" t1="9.59561" t2="50.0607" s0="1" s1="1" s2="1" q0="0.0366867" q1="0.750018" q2="-0.0417489" q3="0.659078" id="2">
+    <CameraObject t0="5.84051" t1="5.81918" t2="-7.52457" s0="1" s1="1" s2="1" q0="0.0331782" q1="-0.944044" q2="0.100242" q3="0.312461" id="2">
         <parameters />
     </CameraObject>
     <PlaceholderObject t0="-47.914" t1="13.9217" t2="20.9026" s0="0.3" s1="0.3" s2="0.3" q0="1" q1="0" q2="0" q3="0" id="3" type_file="" special_type="2">

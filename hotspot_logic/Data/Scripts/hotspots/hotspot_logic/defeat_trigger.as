@@ -68,7 +68,24 @@ void Update() {
         Object@ hotspot_obj = ReadObjectFromID(hotspot.GetID());
         UpdatePlaceholderArrayTransforms(g_target_placeholders, hotspot_obj);
         UpdatePlaceholderArrayTransforms(g_on_defeat_placeholders, hotspot_obj);
-        DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);        
+
+        vec3 hotspot_square_scale = ClampToSquareAspectRatio(hotspot_obj.GetScale());
+        mat4 billboard_transform = ComposeBillboardTransform(
+            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_square_scale, camera.GetUpVector());
+        DrawPlaceholderArrayIcon(g_target_placeholders, DrawTargetIcon, vec4(0.0f, 1.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderArrayIcon(g_on_defeat_placeholders, DrawLightningBoltIcon, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawRabbitCrossbonesIcon(billboard_transform, vec4(1.0f, 0.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);
+
+        if(hotspot_obj.IsSelected() ||
+                IsAnyPlaceholderArrayItemSelected(g_target_placeholders) ||
+                IsAnyPlaceholderArrayItemSelected(g_on_defeat_placeholders)) {
+            ResetPlaceholderArrayEditorLabel(g_target_placeholders, "Target");
+            ResetPlaceholderArrayEditorLabel(g_on_defeat_placeholders, "On-Defeat");
+        } else {
+            ResetPlaceholderArrayEditorLabel(g_target_placeholders, "");
+            ResetPlaceholderArrayEditorLabel(g_on_defeat_placeholders, "");
+        }
     }
 }
 
