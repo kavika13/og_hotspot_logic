@@ -231,6 +231,86 @@ int DrawTargetIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime 
     return DebugDrawLines(target_icon_lines, color, int(lifetime));
 }
 
+int DrawPowerIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+    vec3[] power_icon_lines = {
+        // Top "1" bar
+        vec3(-0.0625f, 1.125f, 0.0f), vec3(0.0625f, 1.125f, 0.0f),   // Top
+        vec3(-0.0625f, 0.125f, 0.0f), vec3(0.0625f, 0.125f, 0.0f),   // Bottom
+        vec3(-0.0625f, 1.125f, 0.0f), vec3(-0.0625f, 0.125f, 0.0f),  // Left
+        vec3(0.0625f, 1.125f, 0.0f), vec3(0.0625f, 0.125f, 0.0f),    // Right
+
+        // Outer semi-circle. See above for code to generate. scale is 1.0
+        vec3(0.3827f, 0.9239f, 0.0f), vec3(0.5556f, 0.8315f, 0.0f),
+        vec3(0.5556f, 0.8315f, 0.0f), vec3(0.7071f, 0.7071f, 0.0f),
+        vec3(0.7071f, 0.7071f, 0.0f), vec3(0.8315f, 0.5556f, 0.0f),
+        vec3(0.8315f, 0.5556f, 0.0f), vec3(0.9239f, 0.3827f, 0.0f),
+        vec3(0.9239f, 0.3827f, 0.0f), vec3(0.9808f, 0.1951f, 0.0f),
+        vec3(0.9808f, 0.1951f, 0.0f), vec3(1.0f, 0.0f, 0.0f),
+        vec3(1.0f, 0.0f, 0.0f), vec3(0.9808f, -0.1951f, 0.0f),
+        vec3(0.9808f, -0.1951f, 0.0f), vec3(0.9239f, -0.3827f, 0.0f),
+        vec3(0.9239f, -0.3827f, 0.0f), vec3(0.8315f, -0.5556f, 0.0f),
+        vec3(0.8315f, -0.5556f, 0.0f), vec3(0.7071f, -0.7071f, 0.0f),
+        vec3(0.7071f, -0.7071f, 0.0f), vec3(0.5556f, -0.8315f, 0.0f),
+        vec3(0.5556f, -0.8315f, 0.0f), vec3(0.3827f, -0.9239f, 0.0f),
+        vec3(0.3827f, -0.9239f, 0.0f), vec3(0.1951f, -0.9808f, 0.0f),
+        vec3(0.1951f, -0.9808f, 0.0f), vec3(0.0f, -1.0f, 0.0f),
+        vec3(0.0f, -1.0f, 0.0f), vec3(-0.1951f, -0.9808f, 0.0f),
+        vec3(-0.1951f, -0.9808f, 0.0f), vec3(-0.3827f, -0.9239f, 0.0f),
+        vec3(-0.3827f, -0.9239f, 0.0f), vec3(-0.5556f, -0.8315f, 0.0f),
+        vec3(-0.5556f, -0.8315f, 0.0f), vec3(-0.7071f, -0.7071f, 0.0f),
+        vec3(-0.7071f, -0.7071f, 0.0f), vec3(-0.8315f, -0.5556f, 0.0f),
+        vec3(-0.8315f, -0.5556f, 0.0f), vec3(-0.9239f, -0.3827f, 0.0f),
+        vec3(-0.9239f, -0.3827f, 0.0f), vec3(-0.9808f, -0.1951f, 0.0f),
+        vec3(-0.9808f, -0.1951f, 0.0f), vec3(-1.0f, 0.0f, 0.0f),
+        vec3(-1.0f, 0.0f, 0.0f), vec3(-0.9808f, 0.1951f, 0.0f),
+        vec3(-0.9808f, 0.1951f, 0.0f), vec3(-0.9239f, 0.3827f, 0.0f),
+        vec3(-0.9239f, 0.3827f, 0.0f), vec3(-0.8315f, 0.5556f, 0.0f),
+        vec3(-0.8315f, 0.5556f, 0.0f), vec3(-0.7071f, 0.7071f, 0.0f),
+        vec3(-0.7071f, 0.7071f, 0.0f), vec3(-0.5556f, 0.8315f, 0.0f),
+        vec3(-0.5556f, 0.8315f, 0.0f), vec3(-0.3827f, 0.9239f, 0.0f),
+
+        // Inner semi-circle. See above for code to generate. scale is 0.875
+        vec3(0.3348f, 0.8084f, 0.0f), vec3(0.4861f, 0.7275f, 0.0f),
+        vec3(0.4861f, 0.7275f, 0.0f), vec3(0.6187f, 0.6187f, 0.0f),
+        vec3(0.6187f, 0.6187f, 0.0f), vec3(0.7275f, 0.4861f, 0.0f),
+        vec3(0.7275f, 0.4861f, 0.0f), vec3(0.8084f, 0.3348f, 0.0f),
+        vec3(0.8084f, 0.3348f, 0.0f), vec3(0.8582f, 0.1707f, 0.0f),
+        vec3(0.8582f, 0.1707f, 0.0f), vec3(0.875f, 0.0f, 0.0f),
+        vec3(0.875f, 0.0f, 0.0f), vec3(0.8582f, -0.1707f, 0.0f),
+        vec3(0.8582f, -0.1707f, 0.0f), vec3(0.8084f, -0.3348f, 0.0f),
+        vec3(0.8084f, -0.3348f, 0.0f), vec3(0.7275f, -0.4861f, 0.0f),
+        vec3(0.7275f, -0.4861f, 0.0f), vec3(0.6187f, -0.6187f, 0.0f),
+        vec3(0.6187f, -0.6187f, 0.0f), vec3(0.4861f, -0.7275f, 0.0f),
+        vec3(0.4861f, -0.7275f, 0.0f), vec3(0.3348f, -0.8084f, 0.0f),
+        vec3(0.3348f, -0.8084f, 0.0f), vec3(0.1707f, -0.8582f, 0.0f),
+        vec3(0.1707f, -0.8582f, 0.0f), vec3(0.0f, -0.875f, 0.0f),
+        vec3(0.0f, -0.875f, 0.0f), vec3(-0.1707f, -0.8582f, 0.0f),
+        vec3(-0.1707f, -0.8582f, 0.0f), vec3(-0.3348f, -0.8084f, 0.0f),
+        vec3(-0.3348f, -0.8084f, 0.0f), vec3(-0.4861f, -0.7275f, 0.0f),
+        vec3(-0.4861f, -0.7275f, 0.0f), vec3(-0.6187f, -0.6187f, 0.0f),
+        vec3(-0.6187f, -0.6187f, 0.0f), vec3(-0.7275f, -0.4861f, 0.0f),
+        vec3(-0.7275f, -0.4861f, 0.0f), vec3(-0.8084f, -0.3348f, 0.0f),
+        vec3(-0.8084f, -0.3348f, 0.0f), vec3(-0.8582f, -0.1707f, 0.0f),
+        vec3(-0.8582f, -0.1707f, 0.0f), vec3(-0.875f, 0.0f, 0.0f),
+        vec3(-0.875f, 0.0f, 0.0f), vec3(-0.8582f, 0.1707f, 0.0f),
+        vec3(-0.8582f, 0.1707f, 0.0f), vec3(-0.8084f, 0.3348f, 0.0f),
+        vec3(-0.8084f, 0.3348f, 0.0f), vec3(-0.7275f, 0.4861f, 0.0f),
+        vec3(-0.7275f, 0.4861f, 0.0f), vec3(-0.6187f, 0.6187f, 0.0f),
+        vec3(-0.6187f, 0.6187f, 0.0f), vec3(-0.4861f, 0.7275f, 0.0f),
+        vec3(-0.4861f, 0.7275f, 0.0f), vec3(-0.3348f, 0.8084f, 0.0f),
+
+        // Semi-circle end caps
+        vec3(0.3827f, 0.9239f, 0.0f), vec3(0.3348f, 0.8084f, 0.0f),    // Right
+        vec3(-0.3827f, 0.9239f, 0.0f), vec3(-0.3348f, 0.8084f, 0.0f),  // Left
+    };
+
+    for(uint i = 0, len = power_icon_lines.length(); i < len; i++) {
+        power_icon_lines[i] = transform * power_icon_lines[i];
+    }
+
+    return DebugDrawLines(power_icon_lines, color, int(lifetime));
+}
+
 mat4 ComposeBillboardTransform(
         const vec3 &in translation, const vec3 &in rotation_normal, const vec3 &in scale,
         const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
