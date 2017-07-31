@@ -366,7 +366,7 @@ void ResetPlaceholderArrayEditorLabel(PlaceholderArray@ placeholder_array, strin
 
         if(id != -1 && ObjectExists(id)) {
             Object@ target_placeholder = ReadObjectFromID(id);
-            SetPlaceholderEditorDisplayName_(target_placeholder, label);
+            SetPlaceholderEditorLabel_(target_placeholder, label);
         }
     }
 }
