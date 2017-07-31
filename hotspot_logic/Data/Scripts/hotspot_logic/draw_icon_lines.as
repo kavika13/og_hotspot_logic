@@ -227,13 +227,13 @@ mat4 ComposeBillboardTransform(
 
     mat4 result_scale;
     result_scale.SetColumn(0, vec3(scale.x, 0.0f, 0.0f));
-    result_scale.SetColumn(1, vec3(0.0f, scale.x, 0.0f));
+    result_scale.SetColumn(1, vec3(0.0f, scale.y, 0.0f));
     result_scale.SetColumn(2, vec3(0.0f, 0.0f, scale.z));
 
     mat4 result_translation;
     result_translation.SetColumn(3, translation);
 
-    return result_translation * result_scale * result_rotation;
+    return result_translation * result_rotation * result_scale;
 }
 
 mat4 ComposeTransform(const vec3 &in translation, const quaternion &in rotation, const vec3 &in scale) {

@@ -150,13 +150,25 @@ int DrawPlaceholderIcon(Placeholder@ placeholder, DRAW_ICON_CALLBACK@ draw_icon,
     if(id != -1 && ObjectExists(id)) {
         if(draw_as_billboard) {
             Object@ placeholder_obj = ReadObjectFromID(id);
+
+            vec3 billboard_scale = placeholder_obj.GetScale() * 0.5f;
+            float min_scale_component = min(min(billboard_scale.x, billboard_scale.y), billboard_scale.z);
+            billboard_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
+
             mat4 billboard_transform = ComposeBillboardTransform(
-                placeholder_obj.GetTranslation(), camera.GetFacing(), placeholder_obj.GetScale() * 0.5f, camera.GetUpVector());
+                placeholder_obj.GetTranslation(), camera.GetFacing(), billboard_scale, camera.GetUpVector());
+
             return draw_icon(billboard_transform, color, lifetime);
         } else {
             Object@ placeholder_obj = ReadObjectFromID(id);
+
+            vec3 world_scale = placeholder_obj.GetScale() * 0.5f;
+            float min_scale_component = min(min(world_scale.x, world_scale.y), world_scale.z);
+            world_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
+
             mat4 world_transform = ComposeTransform(
-                placeholder_obj.GetTranslation(), placeholder_obj.GetRotation(), placeholder_obj.GetScale() * 0.5f);
+                placeholder_obj.GetTranslation(), placeholder_obj.GetRotation(), world_scale);
+
             return draw_icon(world_transform, color, lifetime);
         }
     }
