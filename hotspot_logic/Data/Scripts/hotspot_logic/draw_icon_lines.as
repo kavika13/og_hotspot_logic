@@ -247,3 +247,8 @@ mat4 ComposeTransform(const vec3 &in translation, const quaternion &in rotation,
 
     return result_translation * result_scale * result_rotation;
 }
+
+vec3 ClampToSquareAspectRatio(const vec3 &in value) {
+    float min_component = min(min(value.x, value.y), value.z);
+    return vec3(min_component, min_component, min_component);
+}

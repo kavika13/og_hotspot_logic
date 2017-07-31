@@ -578,22 +578,14 @@ int DrawPlaceholderIcon_(
         Object@ placeholder_obj, DRAW_ICON_CALLBACK@ draw_icon,
         const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard) {
     if(draw_as_billboard) {
-        vec3 billboard_scale = placeholder_obj.GetScale();
-        float min_scale_component = min(min(billboard_scale.x, billboard_scale.y), billboard_scale.z);
-        billboard_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
-
+        vec3 billboard_scale = ClampToSquareAspectRatio(placeholder_obj.GetScale());
         mat4 billboard_transform = ComposeBillboardTransform(
             placeholder_obj.GetTranslation(), camera.GetFacing(), billboard_scale, camera.GetUpVector());
-
         return draw_icon(billboard_transform, color, lifetime);
     } else {
-        vec3 world_scale = placeholder_obj.GetScale();
-        float min_scale_component = min(min(world_scale.x, world_scale.y), world_scale.z);
-        world_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
-
+        vec3 world_scale = ClampToSquareAspectRatio(placeholder_obj.GetScale());
         mat4 world_transform = ComposeTransform(
             placeholder_obj.GetTranslation(), placeholder_obj.GetRotation(), world_scale);
-
         return draw_icon(world_transform, color, lifetime);
     }    
 }

@@ -51,8 +51,10 @@ void Update() {
     if(EditorModeActive()) {
         UpdatePlaceholderTransform(g_trigger_placeholder, hotspot_obj);
         UpdatePlaceholderTransform(g_target_placeholder, hotspot_obj);
+
+        vec3 hotspot_square_scale = ClampToSquareAspectRatio(hotspot_obj.GetScale());
         mat4 billboard_transform = ComposeBillboardTransform(
-            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_obj.GetScale(), camera.GetUpVector());
+            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_square_scale, camera.GetUpVector());
         DrawRabbitTeleportIcon(billboard_transform, vec4(1.0f, 0.5f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
         DrawPlaceholderIcon(g_target_placeholder, DrawTargetIcon, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
         DrawPlaceholderIcon(g_trigger_placeholder, DrawPowerPlugIcon, vec4(0.0f, 1.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
