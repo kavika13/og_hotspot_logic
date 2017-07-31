@@ -53,7 +53,9 @@ void Update() {
         UpdatePlaceholderTransform(g_target_placeholder, hotspot_obj);
         mat4 billboard_transform = ComposeBillboardTransform(
             hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_obj.GetScale(), camera.GetUpVector());
-        DrawRabbitTeleportIcon(billboard_transform, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawRabbitTeleportIcon(billboard_transform, vec4(1.0f, 0.5f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderIcon(g_target_placeholder, DrawTargetIcon, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DrawPlaceholderIcon(g_trigger_placeholder, DrawPowerPlugIcon, vec4(0.0f, 0.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
         DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);            
     }
 }
