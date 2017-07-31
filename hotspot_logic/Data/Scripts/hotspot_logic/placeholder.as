@@ -143,34 +143,12 @@ vec3 GetPlaceholderPos_(Object@ owner, vec3 offset) {
         offset.z * owner.GetScale().z * 2.0f);
 }
 
-// TODO: Figure out how to not depend on camera object
 int DrawPlaceholderIcon(Placeholder@ placeholder, DRAW_ICON_CALLBACK@ draw_icon, const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard = true) {
     int id = placeholder.id;
 
     if(id != -1 && ObjectExists(id)) {
-        if(draw_as_billboard) {
-            Object@ placeholder_obj = ReadObjectFromID(id);
-
-            vec3 billboard_scale = placeholder_obj.GetScale() * 0.5f;
-            float min_scale_component = min(min(billboard_scale.x, billboard_scale.y), billboard_scale.z);
-            billboard_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
-
-            mat4 billboard_transform = ComposeBillboardTransform(
-                placeholder_obj.GetTranslation(), camera.GetFacing(), billboard_scale, camera.GetUpVector());
-
-            return draw_icon(billboard_transform, color, lifetime);
-        } else {
-            Object@ placeholder_obj = ReadObjectFromID(id);
-
-            vec3 world_scale = placeholder_obj.GetScale() * 0.5f;
-            float min_scale_component = min(min(world_scale.x, world_scale.y), world_scale.z);
-            world_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
-
-            mat4 world_transform = ComposeTransform(
-                placeholder_obj.GetTranslation(), placeholder_obj.GetRotation(), world_scale);
-
-            return draw_icon(world_transform, color, lifetime);
-        }
+        Object@ placeholder_obj = ReadObjectFromID(id);
+        return DrawPlaceholderIcon_(placeholder_obj, draw_icon, color, lifetime, draw_as_billboard);
     }
 
     return -1;
@@ -418,6 +396,21 @@ vec3 GetPlaceholderArrayPos_(Object@ owner, vec3 offset, PlacholderArrayLayout l
     }
 }
 
+int DrawPlaceholderArrayIcon(
+        PlaceholderArray@ placeholder_array, DRAW_ICON_CALLBACK@ draw_icon,
+        const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard = true) {
+    if(placeholder_array.ids.length() > 0) {
+        int id = placeholder_array.ids[0];
+
+        if(id != -1 && ObjectExists(id)) {
+            Object@ placeholder_obj = ReadObjectFromID(id);
+            return DrawPlaceholderIcon_(placeholder_obj, draw_icon, color, lifetime, draw_as_billboard);
+        }
+    }
+
+    return -1;
+}
+
 Object@ GetPlaceholderArrayTargetAtIndex(PlaceholderArray@ placeholder_array, uint index) {
     Object@ placeholder = ReadObjectFromID(placeholder_array.ids[index]);
     PlaceholderObject@ inner_placeholder_object = cast<PlaceholderObject@>(placeholder);
@@ -562,4 +555,29 @@ void RelayScriptMessageToPlaceholderTarget_(Object@ target_obj, Object@ owner) {
             break;
         }
     }
+}
+
+// TODO: Figure out how to not depend on camera object
+int DrawPlaceholderIcon_(
+        Object@ placeholder_obj, DRAW_ICON_CALLBACK@ draw_icon,
+        const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard) {
+    if(draw_as_billboard) {
+        vec3 billboard_scale = placeholder_obj.GetScale() * 0.5f;
+        float min_scale_component = min(min(billboard_scale.x, billboard_scale.y), billboard_scale.z);
+        billboard_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
+
+        mat4 billboard_transform = ComposeBillboardTransform(
+            placeholder_obj.GetTranslation(), camera.GetFacing(), billboard_scale, camera.GetUpVector());
+
+        return draw_icon(billboard_transform, color, lifetime);
+    } else {
+        vec3 world_scale = placeholder_obj.GetScale() * 0.5f;
+        float min_scale_component = min(min(world_scale.x, world_scale.y), world_scale.z);
+        world_scale = vec3(min_scale_component, min_scale_component, min_scale_component);
+
+        mat4 world_transform = ComposeTransform(
+            placeholder_obj.GetTranslation(), placeholder_obj.GetRotation(), world_scale);
+
+        return draw_icon(world_transform, color, lifetime);
+    }    
 }
