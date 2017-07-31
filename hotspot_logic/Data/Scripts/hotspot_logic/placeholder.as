@@ -73,6 +73,17 @@ bool SetPlaceholderAllowedConnectionTypes(Placeholder@ placeholder, const Entity
     return SetPlaceholderAllowedConnectionTypes_(id, allowed_types);
 }
 
+bool IsPlaceholderSelected(Placeholder@ placeholder) {
+    int id = placeholder.id;
+
+    if(id != -1 && ObjectExists(id)) {
+        Object@ obj = ReadObjectFromID(id);
+        return obj.IsSelected();
+    }
+
+    return false;
+}
+
 void ProtectPlaceholderParams(Placeholder@ placeholder, ScriptParams@ params) {
     params.AddString(placeholder.id_storage_param_name, "");
     string updated_placeholder_ids = params.GetString(placeholder.id_storage_param_name);

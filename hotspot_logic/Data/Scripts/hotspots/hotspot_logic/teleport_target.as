@@ -55,8 +55,16 @@ void Update() {
             hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_obj.GetScale(), camera.GetUpVector());
         DrawRabbitTeleportIcon(billboard_transform, vec4(1.0f, 0.5f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
         DrawPlaceholderIcon(g_target_placeholder, DrawTargetIcon, vec4(1.0f, 1.0f, 0.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
-        DrawPlaceholderIcon(g_trigger_placeholder, DrawPowerPlugIcon, vec4(0.0f, 0.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
-        DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);            
+        DrawPlaceholderIcon(g_trigger_placeholder, DrawPowerPlugIcon, vec4(0.0f, 1.0f, 1.0f, 1.0f), kDeleteOnUpdateDrawLifetime);
+        DebugDrawText(hotspot_obj.GetTranslation(), GetMainEditorLabel(g_main_editor_label_value), 1.0f, false, _delete_on_update);
+
+        if(hotspot_obj.IsSelected() || IsPlaceholderSelected(g_trigger_placeholder) || IsPlaceholderSelected(g_target_placeholder)) {
+            ResetPlaceholderEditorLabel(g_trigger_placeholder, "Trigger");
+            ResetPlaceholderEditorLabel(g_target_placeholder, "Target");
+        } else {
+            ResetPlaceholderEditorLabel(g_trigger_placeholder, "");
+            ResetPlaceholderEditorLabel(g_target_placeholder, "");
+        }
     }
 }
 

@@ -161,10 +161,10 @@ int DrawPowerPlugIcon(const mat4 &in transform, const vec4 &in color, DrawLifeti
 int DrawTargetIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] target_icon_lines = {
         // Reticle lines
-        vec3(0.0f, 1.0f, 0.0f), vec3(0.0f, 0.75f, 0.0f),    // Top
-        vec3(0.0f, -1.0f, 0.0f), vec3(0.0f, -0.75f, 0.0f),  // Bottom
-        vec3(-1.0f, 0.0f, 0.0f), vec3(-0.75f, 0.0f, 0.0f),  // Left
-        vec3(1.0f, 0.0f, 0.0f), vec3(0.75f, 0.0f, 0.0f),    // Right
+        vec3(0.0f, 1.0f, 0.0f), vec3(0.0f, 0.675f, 0.0f),    // Top
+        vec3(0.0f, -1.0f, 0.0f), vec3(0.0f, -0.675f, 0.0f),  // Bottom
+        vec3(-1.0f, 0.0f, 0.0f), vec3(-0.675f, 0.0f, 0.0f),  // Left
+        vec3(1.0f, 0.0f, 0.0f), vec3(0.675f, 0.0f, 0.0f),    // Right
 
         // Outer circle
         vec3(0.0000f, 0.8750f, 0.0f), vec3(0.1707f, 0.8582f, 0.0f),
