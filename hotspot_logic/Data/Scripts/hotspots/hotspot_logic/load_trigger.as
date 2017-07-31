@@ -60,7 +60,10 @@ void Update() {
         ActivateEditorLabel(g_main_editor_label, hotspot_obj);
         UpdateEditorLabel(g_main_editor_label, hotspot_obj);
         UpdatePlaceholderArrayTransforms(g_target_placeholders, hotspot_obj);
-        DrawDiskIcon(hotspot_obj.GetTransform(), vec4(0.0f, 0.0f, 1.0f, 0.5f), kDeleteOnUpdateDrawLifetime);
+
+        mat4 billboard_transform = GetBillboardTransform(
+            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_obj.GetScale(), camera.GetUpVector());
+        DrawDiskIcon(billboard_transform, vec4(0.0f, 0.0f, 1.0f, 0.5f), kDeleteOnUpdateDrawLifetime);
     } else {
         DeactivateEditorLabel(g_main_editor_label);
     }

@@ -1,5 +1,6 @@
 #include "hotspot_logic/editor_label.as"
 #include "hotspot_logic/placeholder.as"
+#include "hotspot_logic/draw_icon_lines.as"
 
 // TODO: Debug log warning spam that sometimes shows up on undo/redo -> [w][__]: scenegraph.cpp: 857: Requested an object with id 3 but found none. Last info known of this id is: 3, Enter Trigger "" Target 1
 
@@ -52,6 +53,10 @@ void Update() {
         UpdateEditorLabel(g_main_editor_label, hotspot_obj);
         UpdatePlaceholderTransform(g_trigger_placeholder, hotspot_obj);
         UpdatePlaceholderTransform(g_target_placeholder, hotspot_obj);
+
+        mat4 billboard_transform = GetBillboardTransform(
+            hotspot_obj.GetTranslation(), camera.GetFacing(), hotspot_obj.GetScale(), camera.GetUpVector());
+        DrawPlayIcon(billboard_transform, vec4(0.0f, 1.0f, 0.0f, 0.5f), kDeleteOnUpdateDrawLifetime);
     } else {
         DeactivateEditorLabel(g_main_editor_label);
     }
