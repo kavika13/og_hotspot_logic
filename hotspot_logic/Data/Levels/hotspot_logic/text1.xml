@@ -40,7 +40,7 @@
     <EnvObject t0="-26.6538" t1="-3.42134" t2="31.9171" s0="49.5541" s1="1" s2="49.0398" q0="0" q1="0" q2="0" q3="1" id="1" color_r="0" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <CameraObject t0="5.84051" t1="5.81918" t2="-7.52457" s0="1" s1="1" s2="1" q0="0.0331782" q1="-0.944044" q2="0.100242" q3="0.312461" id="2">
+    <CameraObject t0="-50.6854" t1="20.5346" t2="3.25779" s0="1" s1="1" s2="1" q0="0.0316777" q1="0.96832" q2="-0.176169" q3="0.174117" id="2">
         <parameters />
     </CameraObject>
     <PlaceholderObject t0="-47.914" t1="13.9217" t2="20.9026" s0="0.3" s1="0.3" s2="0.3" q0="1" q1="0" q2="0" q3="0" id="3" type_file="" special_type="2">
@@ -200,7 +200,7 @@
             <parameter name="_trigger_placeholder_id" type="string" val="28" />
         </parameters>
     </Hotspot>
-    <EnvObject t0="6.37112" t1="-2.957" t2="68.1059" s0="20.0789" s1="1" s2="16.8993" q0="0" q1="0" q2="0" q3="1" id="27" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
+    <EnvObject t0="6.37112" t1="-2.957" t2="68.1059" s0="20.0789" s1="1" s2="16.8993" q0="0" q1="0" q2="0" q3="1" id="27" color_r="0.0322911" color_g="0.00252211" color_b="0.160784" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
     <PlaceholderObject t0="-3.27352" t1="0.08729" t2="2.01946" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.0463637" q2="0" q3="0.998925" id="28" type_file="" special_type="2">
@@ -209,7 +209,7 @@
             <Connection id="26" />
         </Connections>
     </PlaceholderObject>
-    <EnvObject t0="-53.2619" t1="-2.90027" t2="65.5121" s0="25.1483" s1="1" s2="15.1196" q0="0" q1="0" q2="0" q3="1" id="29" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
+    <EnvObject t0="-53.2619" t1="-2.90027" t2="65.5121" s0="25.1483" s1="1" s2="15.1196" q0="0" q1="0" q2="0" q3="1" id="29" color_r="0.089621" color_g="0" color_b="0.211765" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
     <PlaceholderObject t0="-2.903" t1="0.08729" t2="-1.96335" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="-0.0463637" q2="0" q3="0.998925" id="30" type_file="" special_type="2">
@@ -218,7 +218,7 @@
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <EnvObject t0="-54.9678" t1="-2.93784" t2="20.3728" s0="24.6462" s1="1" s2="16.8993" q0="0" q1="0" q2="0" q3="1" id="31" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
+    <EnvObject t0="-54.9678" t1="-2.93784" t2="20.3728" s0="24.6462" s1="1" s2="16.8993" q0="0" q1="0" q2="0" q3="1" id="31" color_r="0.051641" color_g="0" color_b="0.219608" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
     <PlaceholderObject t0="-43.5914" t1="10.313" t2="23.3149" s0="0.330745" s1="0.330745" s2="0.330745" q0="0" q1="0.732857" q2="0" q3="-0.680383" id="32" type_file="" special_type="2">
@@ -380,7 +380,7 @@
             <Color label="Leather" channel="3" red="1" green="1" blue="1" />
         </Palette>
     </ActorObject>
-    <PlaceholderObject t0="-42.1558" t1="11.6658" t2="10.3601" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="47" type_file="" special_type="0">
+    <PlaceholderObject t0="-39.5204" t1="10.9854" t2="9.01558" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" id="47" type_file="" special_type="0">
         <parameters>
             <parameter name="Dialogue" type="string" val="empty" />
             <parameter name="DisplayName" type="string" val="Reached First Checkpoint" />
@@ -392,7 +392,7 @@
             <Connection id="47" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-42.1558" t1="12.3658" t2="10.3601" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="48" type_file="" special_type="2">
+    <PlaceholderObject t0="-39.5204" t1="11.6854" t2="9.01558" s0="0.3" s1="0.3" s2="0.3" q0="0" q1="0" q2="0" q3="1" id="48" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="33" />
