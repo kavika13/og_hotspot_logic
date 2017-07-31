@@ -71,6 +71,42 @@ void DrawFlagIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime l
     DebugDrawLines(flag_icon_lines, color, int(lifetime));
 }
 
+void DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+    vec3[] rabbit_teleport_icon_lines = {
+        // Rabbit head
+        vec3(-0.25, 1.0f, 0.0f), vec3(0.25f, 0.5f, 0.0f),    // Top ear to back of head
+        vec3(-0.375, 0.75f, 0.0f), vec3(0.0f, 0.75f, 0.0f),  // Bototm ear
+        vec3(0.0f, 0.75f, 0.0f), vec3(-0.25f, 0.5f, 0.0f),   // Forehead
+        vec3(-0.25f, 0.5f, 0.0f), vec3(0.0f, 0.25f, 0.0f),   // Chin
+        vec3(0.0f, 0.25f, 0.0f), vec3(0.25f, 0.5f, 0.0f),    // Bottom of head
+
+        // Rabbit eye
+        vec3(-0.09375f, 0.5f, 0.0f), vec3(0.0f, 0.59375, 0.0f),  // Top left
+        vec3(0.0f, 0.59375, 0.0f), vec3(0.09375f, 0.5f, 0.0f),   // Top right
+        vec3(-0.09375f, 0.5f, 0.0f), vec3(0.0f, 0.40625, 0.0f),   // Bottom left
+        vec3(0.0f, 0.40625, 0.0f), vec3(0.09375f, 0.5f, 0.0f),    // Bottom right
+
+        // Arrow
+        vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, -0.5f, 0.0f),        // Line
+        vec3(0.0f, -0.5f, 0.0f), vec3(-0.125f, -0.375f, 0.0f),  // Left serif
+        vec3(0.0f, -0.5f, 0.0f), vec3(0.125f, -0.375f, 0.0f),   // Right serif
+
+        // Target
+        vec3(0.0f, -1.0f, 0.0f), vec3(-0.5f, -0.875f, 0.0f),    // Left Bottom
+        vec3(-0.5f, -0.875f, 0.0f), vec3(-0.75, -0.625, 0.0f),  // Left Bottom 2
+        vec3(-0.75, -0.625, 0.0f), vec3(-0.625, -0.5, 0.0f),    // Left Top
+        vec3(0.0f, -1.0f, 0.0f), vec3(0.5f, -0.875f, 0.0f),   // Right Bottom
+        vec3(0.5f, -0.875f, 0.0f), vec3(0.75, -0.625, 0.0f),  // Right Bottom 2
+        vec3(0.75, -0.625, 0.0f), vec3(0.625, -0.5, 0.0f),    // Right Top
+    };
+
+    for(uint i = 0, len = rabbit_teleport_icon_lines.length(); i < len; i++) {
+        rabbit_teleport_icon_lines[i] = transform * rabbit_teleport_icon_lines[i];
+    }
+
+    DebugDrawLines(rabbit_teleport_icon_lines, color, int(lifetime));
+}
+
 mat4 GetBillboardTransform(vec3 translation, vec3 rotation_normal, vec3 scale, const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
     const vec3 right_direction = normalize(cross(rotation_normal, up_direction));
     const vec3 new_up_direction = cross(right_direction, rotation_normal);
