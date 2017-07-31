@@ -109,6 +109,26 @@ int DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, DrawL
     return DebugDrawLines(rabbit_teleport_icon_lines, color, int(lifetime));
 }
 
+int DrawLightningBoltIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+    vec3[] lightning_bolt_icon_lines = {
+        vec3(-0.125, 1.0f, 0.0f), vec3(0.3333f, 1.0f, 0.0f),  // Top
+
+        vec3(-0.125f, 1.0f, 0.0f), vec3(-0.3333f, 0.0f, 0.0f),  // Left Top
+        vec3(-0.3333f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f),     // Left Ledge
+        vec3(0.0f, 0.0f, 0.0f), vec3(-0.3333f, -1.0f, 0.0f),    // Left Bottom
+
+        vec3(0.3333f, 1.0f, 0.0f), vec3(0.125f, 0.25f, 0.0f),    // Right top
+        vec3(0.125f, 0.25f, 0.0f), vec3(0.375f, 0.25f, 0.0f),    // Right ledge
+        vec3(0.375f, 0.25f, 0.0f), vec3(-0.3333f, -1.0f, 0.0f),  // Right bottom
+    };
+
+    for(uint i = 0, len = lightning_bolt_icon_lines.length(); i < len; i++) {
+        lightning_bolt_icon_lines[i] = transform * lightning_bolt_icon_lines[i];
+    }
+
+    return DebugDrawLines(lightning_bolt_icon_lines, color, int(lifetime));
+}
+
 mat4 ComposeBillboardTransform(
         const vec3 &in translation, const vec3 &in rotation_normal, const vec3 &in scale,
         const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
