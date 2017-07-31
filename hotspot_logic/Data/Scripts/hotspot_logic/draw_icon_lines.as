@@ -57,13 +57,13 @@ int DrawPlayIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime li
 
 int DrawFlagIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] flag_icon_lines = {
-        vec3(-0.6f, 1.0f, 0.0f), vec3(0.6f, 0.5f, 0.0f),    // Top
+        vec3(-0.6f, 1.0f, 0.0f), vec3(0.6f, 0.5f, 0.0f),  // Top
         vec3(-0.6f, 0.0f, 0.0f), vec3(0.6f, 0.5f, 0.0f),  // Bottom
 
-        vec3(-0.7f, 1.0f, 0.0f), vec3(-0.6f, 1.0f, 0.0f),  // Pole Top
+        vec3(-0.7f, 1.0f, 0.0f), vec3(-0.6f, 1.0f, 0.0f),    // Pole Top
         vec3(-0.7f, -1.0f, 0.0f), vec3(-0.6f, -1.0f, 0.0f),  // Pole Bottom
-        vec3(-0.7f, 1.0f, 0.0f), vec3(-0.7f, -1.0f, 0.0f),  // Pole Left
-        vec3(-0.6f, 1.0f, 0.0f), vec3(-0.6f, -1.0f, 0.0f),  // Pole Right
+        vec3(-0.7f, 1.0f, 0.0f), vec3(-0.7f, -1.0f, 0.0f),   // Pole Left
+        vec3(-0.6f, 1.0f, 0.0f), vec3(-0.6f, -1.0f, 0.0f),   // Pole Right
     };
 
     for(uint i = 0, len = flag_icon_lines.length(); i < len; i++) {
@@ -85,8 +85,8 @@ int DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, DrawL
         // Rabbit eye
         vec3(-0.09375f, 0.5f, 0.0f), vec3(0.0f, 0.59375, 0.0f),  // Top left
         vec3(0.0f, 0.59375, 0.0f), vec3(0.09375f, 0.5f, 0.0f),   // Top right
-        vec3(-0.09375f, 0.5f, 0.0f), vec3(0.0f, 0.40625, 0.0f),   // Bottom left
-        vec3(0.0f, 0.40625, 0.0f), vec3(0.09375f, 0.5f, 0.0f),    // Bottom right
+        vec3(-0.09375f, 0.5f, 0.0f), vec3(0.0f, 0.40625, 0.0f),  // Bottom left
+        vec3(0.0f, 0.40625, 0.0f), vec3(0.09375f, 0.5f, 0.0f),   // Bottom right
 
         // Arrow
         vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, -0.5f, 0.0f),        // Line
@@ -97,9 +97,9 @@ int DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, DrawL
         vec3(0.0f, -1.0f, 0.0f), vec3(-0.5f, -0.875f, 0.0f),    // Left Bottom
         vec3(-0.5f, -0.875f, 0.0f), vec3(-0.75, -0.625, 0.0f),  // Left Bottom 2
         vec3(-0.75, -0.625, 0.0f), vec3(-0.625, -0.5, 0.0f),    // Left Top
-        vec3(0.0f, -1.0f, 0.0f), vec3(0.5f, -0.875f, 0.0f),   // Right Bottom
-        vec3(0.5f, -0.875f, 0.0f), vec3(0.75, -0.625, 0.0f),  // Right Bottom 2
-        vec3(0.75, -0.625, 0.0f), vec3(0.625, -0.5, 0.0f),    // Right Top
+        vec3(0.0f, -1.0f, 0.0f), vec3(0.5f, -0.875f, 0.0f),     // Right Bottom
+        vec3(0.5f, -0.875f, 0.0f), vec3(0.75, -0.625, 0.0f),    // Right Bottom 2
+        vec3(0.75, -0.625, 0.0f), vec3(0.625, -0.5, 0.0f),      // Right Top
     };
 
     for(uint i = 0, len = rabbit_teleport_icon_lines.length(); i < len; i++) {
@@ -218,10 +218,10 @@ int DrawTargetIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime 
         vec3(-0.1707f, 0.8582f, 0.0f), vec3(0.0f, 0.875f, 0.0f),
 
         // Draw inner reticle
-        vec3(0.0f, 0.125f, 0.0f), vec3(-0.125f, 0.0f, 0.0),  // Top left
-        vec3(0.0f, 0.125f, 0.0f), vec3(0.125f, 0.0f, 0.0),  // Top right
+        vec3(0.0f, 0.125f, 0.0f), vec3(-0.125f, 0.0f, 0.0),   // Top left
+        vec3(0.0f, 0.125f, 0.0f), vec3(0.125f, 0.0f, 0.0),    // Top right
         vec3(0.0f, -0.125f, 0.0f), vec3(-0.125f, 0.0f, 0.0),  // Bottom left
-        vec3(0.0f, -0.125f, 0.0f), vec3(0.125f, 0.0f, 0.0),  // Bottom right
+        vec3(0.0f, -0.125f, 0.0f), vec3(0.125f, 0.0f, 0.0),   // Bottom right
     };
 
     for(uint i = 0, len = target_icon_lines.length(); i < len; i++) {
