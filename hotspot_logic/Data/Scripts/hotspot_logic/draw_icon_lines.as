@@ -129,6 +129,35 @@ int DrawLightningBoltIcon(const mat4 &in transform, const vec4 &in color, DrawLi
     return DebugDrawLines(lightning_bolt_icon_lines, color, int(lifetime));
 }
 
+int DrawPowerPlugIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+    vec3[] power_plug_icon_lines = {
+        // Plug body
+        vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f),              // Face
+        vec3(0.0f, 1.0f, 0.0f), vec3(-0.375f, 0.625f, 0.0f),         // Top side
+        vec3(-0.375f, 0.6255f, 0.0f), vec3(-0.5f, 0.25f, 0.0f),
+        vec3(-0.5f, 0.25f, 0.0f), vec3(-0.375f, -0.125f, 0.0f),
+        vec3(1.0f, 0.0f, 0.0f), vec3(0.625f, -0.375f, 0.0f),         // Bottom side
+        vec3(0.625f, -0.375f, 0.0f), vec3(0.25f, -0.5f, 0.0f),
+        vec3(0.25f, -0.5f, 0.0f), vec3(-0.125f, -0.375f, 0.0f),
+        vec3(-0.375f, -0.125f, 0.0f), vec3(-0.125f, -0.375f, 0.0f),  // Back
+
+        // Prongs
+        vec3(0.3333f, 0.6667f, 0.0f), vec3(0.6667f, 1.0f, 0.0f),  // Top
+        vec3(0.6667f, 0.3333f, 0.0f), vec3(1.0f, 0.6667f, 0.0f),  // Bottom
+
+        // Cord
+        vec3(-0.25f, -0.25f, 0.0f), vec3(-0.625f, -0.625f, 0.0f),
+        vec3(-0.625f, -0.625f, 0.0f), vec3(-0.625f, -0.875f, 0.0f),
+        vec3(-0.625f, -0.875f, 0.0f), vec3(-1.0f, -1.0f, 0.0f),
+    };
+
+    for(uint i = 0, len = power_plug_icon_lines.length(); i < len; i++) {
+        power_plug_icon_lines[i] = transform * power_plug_icon_lines[i];
+    }
+
+    return DebugDrawLines(power_plug_icon_lines, color, int(lifetime));
+}
+
 int DrawTargetIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] target_icon_lines = {
         // Reticle lines
