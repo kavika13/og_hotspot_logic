@@ -7,7 +7,9 @@ enum DrawLifetime {
     kPersistentDrawLifetime = 3,  // _persistent
 };
 
-void DrawDiskIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+funcdef int DRAW_ICON_CALLBACK(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime);
+
+int DrawDiskIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] disk_icon_lines = {
         // Body
         vec3(-1.0f, 1.0f, 0.0f), vec3(1.0f, 1.0f, 0.0f),    // Top
@@ -36,10 +38,10 @@ void DrawDiskIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime l
         disk_icon_lines[i] = transform * disk_icon_lines[i];
     }
 
-    DebugDrawLines(disk_icon_lines, color, int(lifetime));
+    return DebugDrawLines(disk_icon_lines, color, int(lifetime));
 }
 
-void DrawPlayIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+int DrawPlayIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] play_icon_lines = {
         vec3(-1.0f, 1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f),    // Top
         vec3(-1.0f, -1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f),  // Bottom
@@ -50,10 +52,10 @@ void DrawPlayIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime l
         play_icon_lines[i] = transform * play_icon_lines[i];
     }
 
-    DebugDrawLines(play_icon_lines, color, int(lifetime));
+    return DebugDrawLines(play_icon_lines, color, int(lifetime));
 }
 
-void DrawFlagIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+int DrawFlagIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] flag_icon_lines = {
         vec3(-0.6f, 1.0f, 0.0f), vec3(0.6f, 0.5f, 0.0f),    // Top
         vec3(-0.6f, 0.0f, 0.0f), vec3(0.6f, 0.5f, 0.0f),  // Bottom
@@ -68,10 +70,10 @@ void DrawFlagIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime l
         flag_icon_lines[i] = transform * flag_icon_lines[i];
     }
 
-    DebugDrawLines(flag_icon_lines, color, int(lifetime));
+    return DebugDrawLines(flag_icon_lines, color, int(lifetime));
 }
 
-void DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+int DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] rabbit_teleport_icon_lines = {
         // Rabbit head
         vec3(-0.25, 1.0f, 0.0f), vec3(0.25f, 0.5f, 0.0f),    // Top ear to back of head
@@ -104,10 +106,12 @@ void DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, Draw
         rabbit_teleport_icon_lines[i] = transform * rabbit_teleport_icon_lines[i];
     }
 
-    DebugDrawLines(rabbit_teleport_icon_lines, color, int(lifetime));
+    return DebugDrawLines(rabbit_teleport_icon_lines, color, int(lifetime));
 }
 
-mat4 GetBillboardTransform(vec3 translation, vec3 rotation_normal, vec3 scale, const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
+mat4 ComposeBillboardTransform(
+        const vec3 &in translation, const vec3 &in rotation_normal, const vec3 &in scale,
+        const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
     const vec3 right_direction = normalize(cross(rotation_normal, up_direction));
     const vec3 new_up_direction = cross(right_direction, rotation_normal);
 
@@ -121,6 +125,18 @@ mat4 GetBillboardTransform(vec3 translation, vec3 rotation_normal, vec3 scale, c
     result_scale.SetColumn(1, vec3(0.0f, scale.x, 0.0f));
     result_scale.SetColumn(2, vec3(0.0f, 0.0f, scale.z));
 
+    mat4 result_translation;
+    result_translation.SetColumn(3, translation);
+
+    return result_translation * result_scale * result_rotation;
+}
+
+mat4 ComposeTransform(const vec3 &in translation, const quaternion &in rotation, const vec3 &in scale) {
+    mat4 result_rotation = Mat4FromQuaternion(rotation);
+    mat4 result_scale;
+    result_scale.SetColumn(0, vec3(scale.x, 0.0f, 0.0f));
+    result_scale.SetColumn(1, vec3(0.0f, scale.x, 0.0f));
+    result_scale.SetColumn(2, vec3(0.0f, 0.0f, scale.z));
     mat4 result_translation;
     result_translation.SetColumn(3, translation);
 
