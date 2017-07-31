@@ -1,3 +1,5 @@
+#include "hotspot_logic/draw_icon_lines.as"
+
 const string k_placeholder_object_path = "Data/Objects/placeholder/empty_placeholder.xml";
 
 enum PlacholderType {
@@ -128,6 +130,27 @@ vec3 GetPlaceholderPos_(Object@ owner, vec3 offset) {
         offset.x * owner.GetScale().x * 2.0f,
         (offset.y + 1.1f) * owner.GetScale().y * 2.0f,
         offset.z * owner.GetScale().z * 2.0f);
+}
+
+// TODO: Figure out how to not depend on camera object
+int DrawPlaceholderIcon(Placeholder@ placeholder, DRAW_ICON_CALLBACK@ draw_icon, const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard = true) {
+    int id = placeholder.id;
+
+    if(id != -1 && ObjectExists(id)) {
+        if(draw_as_billboard) {
+            Object@ placeholder_obj = ReadObjectFromID(id);
+            mat4 billboard_transform = ComposeBillboardTransform(
+                placeholder_obj.GetTranslation(), camera.GetFacing(), placeholder_obj.GetScale() * 0.5f, camera.GetUpVector());
+            return draw_icon(billboard_transform, color, lifetime);
+        } else {
+            Object@ placeholder_obj = ReadObjectFromID(id);
+            mat4 world_transform = ComposeTransform(
+                placeholder_obj.GetTranslation(), placeholder_obj.GetRotation(), placeholder_obj.GetScale() * 0.5f);
+            return draw_icon(world_transform, color, lifetime);
+        }
+    }
+
+    return -1;
 }
 
 Object@ GetPlaceholderTarget(Placeholder@ placeholder) {
