@@ -109,6 +109,43 @@ int DrawRabbitTeleportIcon(const mat4 &in transform, const vec4 &in color, DrawL
     return DebugDrawLines(rabbit_teleport_icon_lines, color, int(lifetime));
 }
 
+int DrawRabbitCrossbonesIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
+    vec3[] rabbit_crossbones_icon_lines = {
+        // Rabbit head - TODO: Scale this up a bit
+        vec3(-0.25, 1.0f, 0.0f), vec3(0.25f, 0.5f, 0.0f),    // Top ear to back of head
+        vec3(-0.375, 0.75f, 0.0f), vec3(0.0f, 0.75f, 0.0f),  // Bototm ear
+        vec3(0.0f, 0.75f, 0.0f), vec3(-0.25f, 0.5f, 0.0f),   // Forehead
+        vec3(-0.25f, 0.5f, 0.0f), vec3(0.0f, 0.25f, 0.0f),   // Chin
+        vec3(0.0f, 0.25f, 0.0f), vec3(0.25f, 0.5f, 0.0f),    // Bottom of head
+
+        // Rabbit eye
+        vec3(-0.09375f, 0.5f, 0.0f), vec3(0.0f, 0.59375, 0.0f),  // Top left
+        vec3(0.0f, 0.59375, 0.0f), vec3(0.09375f, 0.5f, 0.0f),   // Top right
+        vec3(-0.09375f, 0.5f, 0.0f), vec3(0.0f, 0.40625, 0.0f),  // Bottom left
+        vec3(0.0f, 0.40625, 0.0f), vec3(0.09375f, 0.5f, 0.0f),   // Bottom right
+
+        // Top left bone - TODO: Make knobs even
+        vec3(-0.875, 0.0f, 0.0f), vec3(0.875, -0.875f, 0.0f),   // Bar
+        vec3(-0.875, 0.0f, 0.0f), vec3(-1.0, -0.125f, 0.0f),    // Upper knobs
+        vec3(-0.875, 0.0f, 0.0f), vec3(-0.875f, 0.125f, 0.0f),
+        vec3(0.875, -0.875f, 0.0f), vec3(1.0, -0.75f, 0.0f),    // Lower knobs
+        vec3(0.875, -0.875f, 0.0f), vec3(0.875f, -1.0f, 0.0f),
+
+        // Bottom left bone - TODO: Make knobs even
+        vec3(-0.875, -0.875f, 0.0f), vec3(0.875, 0.0f, 0.0f),     // Bar
+        vec3(-0.875, -0.875f, 0.0f), vec3(-1.0, -0.75f, 0.0f),    // Lower knobs
+        vec3(-0.875, -0.875f, 0.0f), vec3(-0.875f, -1.0f, 0.0f),
+        vec3(0.875, 0.0f, 0.0f), vec3(1.0, -0.125f, 0.0f),        // Upper knobs
+        vec3(0.875, 0.0f, 0.0f), vec3(0.875f, 0.125f, 0.0f),
+    };
+
+    for(uint i = 0, len = rabbit_crossbones_icon_lines.length(); i < len; i++) {
+        rabbit_crossbones_icon_lines[i] = transform * rabbit_crossbones_icon_lines[i];
+    }
+
+    return DebugDrawLines(rabbit_crossbones_icon_lines, color, int(lifetime));
+}
+
 int DrawLightningBoltIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime lifetime) {
     vec3[] lightning_bolt_icon_lines = {
         vec3(-0.125, 1.0f, 0.0f), vec3(0.3333f, 1.0f, 0.0f),  // Top
