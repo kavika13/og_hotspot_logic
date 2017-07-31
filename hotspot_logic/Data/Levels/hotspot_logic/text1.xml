@@ -40,7 +40,7 @@
     <EnvObject t0="-26.6538" t1="-3.42134" t2="31.9171" s0="49.5541" s1="1" s2="49.0398" q0="0" q1="0" q2="0" q3="1" id="1" color_r="0" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/primitives/edged_cube.xml">
         <parameters />
     </EnvObject>
-    <CameraObject t0="-39.0413" t1="18.408" t2="-6.76146" s0="1" s1="1" s2="1" q0="0.0100358" q1="0.989109" q2="-0.0810772" q3="0.122432" id="2">
+    <CameraObject t0="-14.5635" t1="9.59561" t2="50.0607" s0="1" s1="1" s2="1" q0="0.0366867" q1="0.750018" q2="-0.0417489" q3="0.659078" id="2">
         <parameters />
     </CameraObject>
     <PlaceholderObject t0="-47.914" t1="13.9217" t2="20.9026" s0="0.3" s1="0.3" s2="0.3" q0="1" q1="0" q2="0" q3="0" id="3" type_file="" special_type="2">
@@ -318,20 +318,20 @@
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="-14.0912" t1="7.41572" t2="-7.73582" s0="0.138115" s1="0.138115" s2="0.138115" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="42" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+    <Hotspot t0="-15.4826" t1="6.73229" t2="-5.34073" s0="0.25" s1="0.25" s2="0.25" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="42" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="_target_placeholder_id" type="string" val="44" />
             <parameter name="_trigger_placeholder_id" type="string" val="43" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-14.3335" t1="7.71957" t2="-7.6031" s0="0.0414345" s1="0.0414345" s2="0.0414345" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="43" type_file="" special_type="2">
+    <PlaceholderObject t0="-15.9211" t1="7.28229" t2="-5.10049" s0="0.075" s1="0.075" s2="0.075" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="43" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="42" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-13.849" t1="7.71957" t2="-7.86855" s0="0.0414345" s1="0.0414345" s2="0.0414345" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="44" type_file="" special_type="2">
+    <PlaceholderObject t0="-15.0441" t1="7.28229" t2="-5.58097" s0="0.075" s1="0.075" s2="0.075" q0="0" q1="-0.509665" q2="0" q3="0.860373" id="44" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="40" />
@@ -398,7 +398,7 @@
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="-42.5182" t1="11.6907" t2="11.9151" s0="0.0991976" s1="0.0991976" s2="0.0991976" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="49" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+    <Hotspot t0="-42.9747" t1="11.3905" t2="12.4536" s0="0.25" s1="0.25" s2="0.25" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="49" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="_target_placeholder_id" type="string" val="52" />
@@ -411,13 +411,13 @@
             <Connection id="51" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-42.5411" t1="11.9089" t2="12.1122" s0="0.0297593" s1="0.0297593" s2="0.0297593" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="51" type_file="" special_type="2">
+    <PlaceholderObject t0="-43.0324" t1="11.9405" t2="12.9503" s0="0.075" s1="0.075" s2="0.075" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="51" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="49" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-42.4953" t1="11.9089" t2="11.718" s0="0.0297593" s1="0.0297593" s2="0.0297593" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="52" type_file="" special_type="2">
+    <PlaceholderObject t0="-42.9171" t1="11.9405" t2="11.9569" s0="0.075" s1="0.075" s2="0.075" q0="0" q1="-0.057759" q2="0" q3="0.998331" id="52" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="47" />
@@ -677,20 +677,20 @@
             <Connection id="33" />
         </Connections>
     </PlaceholderObject>
-    <Hotspot t0="-11.2416" t1="-1.84182" t2="39.9758" s0="0.169097" s1="0.169097" s2="0.169097" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="91" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
+    <Hotspot t0="-11.2416" t1="-1.84182" t2="39.9758" s0="0.25" s1="0.25" s2="0.25" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="91" type_file="Data/Objects/Hotspots/hotspot_logic/play_dialogue_target.xml">
         <parameters>
             <parameter name="Editor Label" type="string" val="" />
             <parameter name="_target_placeholder_id" type="string" val="93" />
             <parameter name="_trigger_placeholder_id" type="string" val="92" />
         </parameters>
     </Hotspot>
-    <PlaceholderObject t0="-11.3498" t1="-1.46981" t2="40.2962" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="92" type_file="" special_type="2">
+    <PlaceholderObject t0="-11.4016" t1="-1.29182" t2="40.4495" s0="0.075" s1="0.075" s2="0.075" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="92" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="91" />
         </Connections>
     </PlaceholderObject>
-    <PlaceholderObject t0="-11.1334" t1="-1.46981" t2="39.6554" s0="0.0507292" s1="0.0507292" s2="0.0507292" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="93" type_file="" special_type="2">
+    <PlaceholderObject t0="-11.0816" t1="-1.29182" t2="39.5021" s0="0.075" s1="0.075" s2="0.075" q0="0" q1="-0.162126" q2="0" q3="0.98677" id="93" type_file="" special_type="2">
         <parameters />
         <Connections>
             <Connection id="89" />

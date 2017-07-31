@@ -143,12 +143,14 @@ vec3 GetPlaceholderPos_(Object@ owner, vec3 offset) {
         offset.z * owner.GetScale().z * 2.0f);
 }
 
-int DrawPlaceholderIcon(Placeholder@ placeholder, DRAW_ICON_CALLBACK@ draw_icon, const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard = true) {
+int DrawPlaceholderIcon(
+        Placeholder@ placeholder, DRAW_ICON_CALLBACK@ draw_icon,
+        const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard = true, float minimum_scale = 0.125f) {
     int id = placeholder.id;
 
     if(id != -1 && ObjectExists(id)) {
         Object@ placeholder_obj = ReadObjectFromID(id);
-        return DrawPlaceholderIcon_(placeholder_obj, draw_icon, color, lifetime, draw_as_billboard);
+        return DrawPlaceholderIcon_(placeholder_obj, draw_icon, color, lifetime, draw_as_billboard, minimum_scale);
     }
 
     return -1;
@@ -414,13 +416,13 @@ vec3 GetPlaceholderArrayPos_(Object@ owner, vec3 offset, PlacholderArrayLayout l
 
 int DrawPlaceholderArrayIcon(
         PlaceholderArray@ placeholder_array, DRAW_ICON_CALLBACK@ draw_icon,
-        const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard = true) {
+        const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard = true, float minimum_scale = 0.125f) {
     if(placeholder_array.ids.length() > 0) {
         int id = placeholder_array.ids[0];
 
         if(id != -1 && ObjectExists(id)) {
             Object@ placeholder_obj = ReadObjectFromID(id);
-            return DrawPlaceholderIcon_(placeholder_obj, draw_icon, color, lifetime, draw_as_billboard);
+            return DrawPlaceholderIcon_(placeholder_obj, draw_icon, color, lifetime, draw_as_billboard, minimum_scale);
         }
     }
 
@@ -576,14 +578,16 @@ void RelayScriptMessageToPlaceholderTarget_(Object@ target_obj, Object@ owner) {
 // TODO: Figure out how to not depend on camera object
 int DrawPlaceholderIcon_(
         Object@ placeholder_obj, DRAW_ICON_CALLBACK@ draw_icon,
-        const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard) {
+        const vec4 &in color, DrawLifetime lifetime, bool draw_as_billboard, float minimum_scale) {
+    vec3 min_scale_vec = vec3(minimum_scale, minimum_scale, minimum_scale);
+
     if(draw_as_billboard) {
-        vec3 billboard_scale = ClampToSquareAspectRatio(placeholder_obj.GetScale());
+        vec3 billboard_scale = ComponentWiseMax(ClampToSquareAspectRatio(placeholder_obj.GetScale()), min_scale_vec);
         mat4 billboard_transform = ComposeBillboardTransform(
             placeholder_obj.GetTranslation(), camera.GetFacing(), billboard_scale, camera.GetUpVector());
         return draw_icon(billboard_transform, color, lifetime);
     } else {
-        vec3 world_scale = ClampToSquareAspectRatio(placeholder_obj.GetScale());
+        vec3 world_scale = ComponentWiseMax(ClampToSquareAspectRatio(placeholder_obj.GetScale()), min_scale_vec);
         mat4 world_transform = ComposeTransform(
             placeholder_obj.GetTranslation(), placeholder_obj.GetRotation(), world_scale);
         return draw_icon(world_transform, color, lifetime);

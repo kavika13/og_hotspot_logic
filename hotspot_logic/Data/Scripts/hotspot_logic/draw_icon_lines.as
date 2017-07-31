@@ -311,6 +311,7 @@ int DrawPowerIcon(const mat4 &in transform, const vec4 &in color, DrawLifetime l
     return DebugDrawLines(power_icon_lines, color, int(lifetime));
 }
 
+// TODO: Move the vector math stuff out somewhere else
 mat4 ComposeBillboardTransform(
         const vec3 &in translation, const vec3 &in rotation_normal, const vec3 &in scale,
         const vec3 &in up_direction = vec3(0.0f, 1.0f, 0.0f)) {
@@ -348,4 +349,12 @@ mat4 ComposeTransform(const vec3 &in translation, const quaternion &in rotation,
 vec3 ClampToSquareAspectRatio(const vec3 &in value) {
     float min_component = min(min(value.x, value.y), value.z);
     return vec3(min_component, min_component, min_component);
+}
+
+vec3 ComponentWiseMin(const vec3 &in lhs, const vec3 &in rhs) {
+    return vec3(min(lhs.x, rhs.x), min(lhs.y, rhs.y), min(lhs.z, rhs.z));
+}
+
+vec3 ComponentWiseMax(const vec3 &in lhs, const vec3 &in rhs) {
+    return vec3(max(lhs.x, rhs.x), max(lhs.y, rhs.y), max(lhs.z, rhs.z));
 }
